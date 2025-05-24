@@ -1,0 +1,476 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200&family=Lora:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&family=Roboto:wght@300&display=swap");
+
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0p;
+  margin: 0px;
+}
+
+// stepper-form//
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+}
+.validationError{
+  color: red;
+}
+.step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  // border: 2px solid #007bff;
+  border: none;
+  border-radius: 50%;
+  line-height: 40px;
+  background-color: #fff;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 20px;
+  margin: -5px auto 10px;
+}
+
+.step-title {
+  font-size: 16px;
+  color: #555;
+}
+
+.step.active .step-circle,
+.step.completed .step-circle {
+  background-color: #073434;
+  color: #fff;
+}
+
+.step:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: -50%;
+  width: 100%;
+  height: 2px;
+  background-color: #073434;
+  z-index: -1;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #073434;
+  z-index: -1;
+}
+
+.step.completed:not(:first-child)::before,
+.step.completed:not(:last-child)::after {
+  background-color: #073434;
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+//-----//
+
+// .input-group {
+//   position: relative;
+// }
+
+// .myfile-label {
+//   display: inline-block;
+//   background: #007bff; /* Change the background color as needed */
+//   color: #fff; /* Change the text color as needed */
+//   padding: 8px 12px;
+//   border: 1px solid #007bff; /* Add border to match input */
+//   border-radius: 4px;
+//   cursor: pointer;
+// }
+
+// .myfile-label:hover {
+//   background: #0056b3; /* Change the background color on hover as needed */
+// }
+
+// .myfile-input {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   opacity: 0;
+//   cursor: pointer;
+//   border: 1px solid #ced4da; /* Add border styles */
+//   border-radius: 4px; /* Add border radius */
+// }
+
+// .visually-hidden {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   padding: 0;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   border: 0;
+// }
+
+.mycards-sec .propertier-kyc {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FAAD39;
+  margin-bottom: 25px;
+}
+
+.mycards-sec {
+  width: 30%;
+  margin: 0px auto;
+}
+
+.kyc-section {
+  margin-top: 8rem;
+}
+
+.mycards-sec .my-select {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+.mytext-image-file {
+  display: none;
+}
+.main-upload-botns {
+  align-items: center;
+    background-color: #192259;
+    border: 1px solid #464E8A;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    height: 250px;
+    justify-content: center;
+
+}
+.select-file-para {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  color: #E7E4E4
+}
+.mycards-sec .myinputs {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+.mycards-sec .myfile-input {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+
+.mycards-sec .label-business {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FAAD39;
+}
+
+.mycards-sec .next-botns {
+  background-color: #e1b737;
+  padding: 13px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  color: #101729;
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+}
+
+// second//////
+
+.mycards-secondiv {
+  width: 30%;
+  margin: 0px auto;
+}
+
+.mycards-secondiv .propertier-kyc-heading {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e2a3a;
+  margin-bottom: 25px;
+}
+
+.my-select-one {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+
+.myinputs-one {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+
+.next-botns-two {
+  background-color: #e1b737;
+  padding: 13px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  color: #101729;
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+}
+
+.myfile-input-one {
+  // background: #fcfcfc;
+  // border-radius: 6px;
+  // width: 100%;
+  // padding: 13px 15px;
+  // font-family: Inter;
+  // font-size: 16px;
+  // font-weight: 400;
+  // color: #44475b;
+  // border: none;
+  // margin-bottom: 15px;
+  background: #fcfcfc;
+  border-radius: 6px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 45px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #44475b;
+  border: none;
+  border-right: none;
+  margin-bottom: 15px;
+}
+
+.input-group-forms {
+  position: relative;
+}
+.input-group-forms img {
+  position: absolute;
+  top: 14px;
+  right: 15px;
+}
+.mycards-secondiv label {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  color: #101729;
+}
+
+// threee
+
+.mycards-third-div {
+  width: 30%;
+  margin: 0px auto;
+}
+.propertier-kyc-heading-three {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e2a3a;
+  margin-bottom: 25px;
+}
+
+.label-business-three {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FAAD39;
+}
+.my-select-three {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+
+.myinputs-three {
+  background: #192259;
+  border-radius: 6px;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  border: none;
+  margin-bottom: 15px;
+  border: 1px solid #464E8A;
+}
+
+.Submit-botns {
+  background-color: #e1b737;
+  padding: 13px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  color: #101729;
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+}
+.Submit-botnss {
+  background-color: #cbbc8f;
+  padding: 13px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  color: #101729;
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+}
+// four section //
+
+.kyc-completed-sec {
+  width: 30%;
+  margin: 0px auto;
+}
+
+.kyc-heading-four {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 25px;
+  color: #ffffff;
+}
+
+.kyc-paragraphs {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 40px;
+}
+
+.back-to-home-botns {
+  background-color: #e1b737;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  color: #101729;
+  border-radius: 100px;
+  padding: 17px 33px 17px 46px;
+  border: none;
+}
+.myarrow {
+  margin-right: 10px;
+}
+
+// media-quries//
+
+@media (max-width: 500px) {
+  .mycards-sec {
+    width: 93%;
+  }
+  .mycards-secondiv {
+    width: 93%;
+  }
+
+  .mycards-third-div {
+    width: 93%;
+  }
+  .kyc-completed-sec {
+    width: 93%;
+  }
+}
+
+@media only screen and (max-width: 680px) and (min-width: 500px) {
+  .mycards-sec {
+    width: 93%;
+  }
+  .mycards-secondiv {
+    width: 93%;
+  }
+
+  .mycards-third-div {
+    width: 93%;
+  }
+  .kyc-completed-sec {
+    width: 93%;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 680px) {
+  .mycards-sec {
+    width: 85%;
+  }
+  .mycards-secondiv {
+    width: 85%;
+  }
+
+  .mycards-third-div {
+    width: 85%;
+  }
+  .kyc-completed-sec {
+    width: 85%;
+  }
+}

@@ -1,0 +1,12 @@
+<!-- <app-headerpage></app-headerpage> -->
+<!-- <ngx-spinner bdColor = "rgba(250,250,250,0.8)" size = "medium" color = "#074646" type = "ball-8bits" [fullScreen] = "false"><b><p style="color: #074646" > Loading... </p></b></ngx-spinner> -->
+<ngx-spinner bdColor="rgba(0.027, 0.275, 0.275, 0.8)" size="large" color="#5d5d5d" type="ball-spin-clockwise">
+    <div class="custom-spinner-template">
+      <img src="../../assets/logo.png" alt="Loading..." class="flippable-image">
+    </div>
+    <p class="loader">Loading....</p>
+  </ngx-spinner>
+  
+<router-outlet></router-outlet>
+<ng-toast></ng-toast>
+<!-- <app-footerpage></app-footerpage> -->

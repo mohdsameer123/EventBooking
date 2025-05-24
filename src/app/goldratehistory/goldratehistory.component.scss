@@ -1,0 +1,46 @@
+.main-table {
+    padding: 20px;
+
+    table tr th {
+        background-color: #A5386008;
+        text-align: center;
+        padding: 16px;
+    }
+
+    table tr td {
+        text-align: center;
+        // font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        color: #2C2E31;
+        padding: 16px;
+    }
+
+    .table tr th,
+    table tr td {
+        border: 0.5px solid #ffffff4b;
+    }
+}
+
+::ng-deep .ngx-pagination {
+    .current {
+        background: #E1B737 !important;
+    }
+
+    a {
+        color: #fff !important;
+        text-decoration: none;
+    }
+}
+
+.maindiv {
+    margin-top: 100px !important;
+}
+
+th {
+    color: beige
+}
+
+.tdclass {
+    color: beige !important
+}

@@ -1,0 +1,18 @@
+
+.iframe-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw; /* Use viewport width */
+    height: 100vh; /* Use viewport height */
+}
+
+iframe {
+    width: 50%; /* Each iframe takes half of the screen width */
+    height: 50vh; /* Each iframe takes half of the screen height */
+    border: none; /* Remove iframe borders */
+}
+.one{
+    width: 100%; /* Each iframe takes half of the screen width */
+    height: 50vh; /* Each iframe takes half of the screen height */
+    border: none; /* Remove iframe borders */
+}

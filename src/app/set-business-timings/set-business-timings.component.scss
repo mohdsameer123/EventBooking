@@ -1,0 +1,123 @@
+.admin-timing {
+    padding: 30px;
+    background: #010A43; // Match the background color from orders.component.scss
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+h2 {
+    color: #E1B737; // Use the gold color for headings
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+    border-bottom: 2px solid #eef2f7;
+    padding-bottom: 15px;
+}
+
+.timing-row {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    padding: 16px 24px;
+    background: #192259; // Dark background for timing rows
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition: all 0.25s ease;
+    margin:10px;
+}
+
+.timing-row:hover {
+    background: #1a1a1a; // Darker shade on hover
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #dee2e6;
+}
+
+.status-field label {
+    min-width: 120px;
+    font-weight: 600;
+    color: #E1B737; // Gold color for labels
+    font-size: 15px;
+}
+
+.time-field label {
+    color: #E1B737; // Gold color for time field labels
+    font-weight: 500;
+    font-size: 14px;
+}
+
+select, input[type="time"] {
+    padding: 10px 16px;
+    border: 1.5px solid #464E8A; // Match the border color
+    border-radius: 8px;
+    font-size: 14px;
+    color: #ffffff; // White text color
+    background-color: #192259; // Dark background for inputs
+    transition: all 0.2s ease;
+    height: 42px;
+}
+
+button[type="submit"] {
+    margin-top: 32px;
+    padding: 12px 32px;
+    background-color: #E1B737; // Gold color for submit button
+    color: #010A43; // Dark text color for contrast
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(225, 183, 55, 0.2);
+    margin-left:15px;
+}
+
+button[type="submit"]:hover {
+    background-color: #c8bfa2; // Darker shade for hover effect
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(225, 183, 55, 0.25);
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+    .admin-timing {
+        padding: 20px;
+        margin: 15px;
+    }
+
+    .timing-row {
+        padding: 14px 18px;
+        gap: 24px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .timing-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px !important;
+    }
+
+    .time-inputs {
+        flex-direction: column;
+        width: 100%;
+        gap: 20px !important;
+    }
+
+    .time-field {
+        width: 100%;
+    }
+
+    .status-field, .time-field {
+        width: 100%;
+    }
+
+    select, input[type="time"] {
+        width: 100%;
+    }
+
+    .status-field label {
+        min-width: 100px;
+    }
+}

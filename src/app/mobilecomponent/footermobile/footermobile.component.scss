@@ -1,0 +1,55 @@
+@media (max-width: 500px) {
+    .footer-background {
+        background-color: #010A43;
+        width: 100%;
+        border-top: 2px solid #D9D9D980;
+        display: flex;
+        justify-content: space-between;
+        padding: 9px 22px;
+
+    }
+
+    .footer-background .box1.active .live-rates-para {
+        color: #e1b737;
+        font-weight: bold;
+        // padding: 10px;
+    }
+    
+    // .footer-background .box1.active {
+    //     // border: 1px solid #e1b737; /* Example change, adjust as needed */
+    //     // border-radius: 5px;
+    //     // background-color:#e1b737 ;
+    //     // color: #ffffff;
+
+    // }
+    
+    .live-rates-para {
+        color: #94A2B8;
+        padding-top: 3px;
+        font-size: 12px;
+    }
+
+    .box1 {
+        text-align: center;
+    }
+
+    span,
+    p {
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .icon {
+        width: 18px;
+        height: 18px;
+        color: #94A2B8;
+    }
+
+}
+
+@media screen and (max-width: 2200px) and (min-width: 500px) {
+    .footer-background {
+        display: none !important;
+    }
+}

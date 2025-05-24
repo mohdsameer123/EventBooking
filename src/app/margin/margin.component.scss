@@ -1,0 +1,182 @@
+// .priceBox {
+//     width: 384px;
+//     height: 110px;
+//     border-radius: 15px;
+//     background-color:
+//         #192259;
+//     border: 1px solid #464E8A;
+// }
+
+
+
+
+
+.my-button {
+    background:
+    #FAAD39;
+    border-radius: 6px;
+    width: 100%;
+    padding: 13px 15px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    color: #101729;
+    border: none;
+    margin-bottom: 15px;
+    border: 1px solid #464E8A;
+}
+
+.formselect-gold {
+    width: 100%;
+    padding: 13px;
+    border-radius: 6px;
+    background: #FCFCFC;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: #101729;
+    border: none;
+    margin-top: 25px;
+}
+
+.gold-live-main {
+    margin-left: 30px;
+    margin-bottom: 38px;
+}
+
+.gold-live {
+    color: #E7E4E4;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: "Inter";
+}
+
+.spot-para {
+    font-weight: 700;
+    font-size: 25px;
+    padding-top: 10px;
+    color: #ffffff;
+}
+
+.commodiates-section {
+
+    text-align: center;
+    margin-top: 131px;
+}
+
+.gold-busket {
+    width: 90px;
+    height: 90px;
+}
+// .labels{
+//     color:
+//     #FCA311;
+// }
+.validationError{
+    color: red;
+}
+
+// .head{
+//     color: #ffffff;
+// }
+
+
+
+
+
+
+.first-sec{
+    width: 25%;
+    margin: 0px auto;
+    margin-top: 130px;
+}
+.my-select-gold {
+    // background: #192259;
+    border-radius: 6px;
+    width: 100%;
+    padding: 13px 15px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    // color: #ffffff;
+    border: none;
+    margin-bottom: 15px;
+    border: 1px solid #464E8A;
+}
+.my-select {
+    // background: #192259;
+    // border-radius: 6px;
+    width: 100%;
+    padding: 13px 15px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    border: none;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #464E8A;
+}
+.box {
+    // background-color: #192259;
+    border-radius: 15px;
+    border: 1px solid #464E8A;
+    padding: 27px 27px 27px 46px;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    margin: 0px auto;
+
+}
+.my-button-invalid{
+    // background:
+    // #cdad7c;
+    border-radius: 6px;
+    width: 100%;
+    padding: 13px 15px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    // color: #101729;
+    border: none;
+    margin-bottom: 15px;
+    border: 1px solid #464E8A;
+}
+
+
+
+
+
+
+
+@media (max-width: 500px) {
+    .first-sec{
+        width: initial;
+        padding: 10px;
+    }
+}
+@media only screen and (max-width: 680px) and (min-width: 500px){
+    .first-sec{
+        width: 70%;
+
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 680px){
+    .first-sec{
+        width: 70%;
+
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    .first-sec{
+        width: 60%;
+
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 991px) {
+    .first-sec{
+        width: 50%;
+
+    }
+}

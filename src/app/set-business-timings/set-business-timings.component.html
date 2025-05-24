@@ -1,0 +1,40 @@
+<section class="myclasssection pt-5">
+    <div class="maindiv mt-5">
+        <div class="container">
+            <div class="admin-timing">
+                <h2>Set Business Timing</h2>
+                <form (ngSubmit)="saveTimings()">
+                    <!-- Individual day settings -->
+                    <div *ngFor="let day of daysOfWeek" class="day-timing">
+                        <div class="timing-row">
+                            <div class="status-field">
+                                <label>{{ day }}:</label>
+                                <select [(ngModel)]="timings[day].isClosed" name="status{{ day }}"
+                                    (ngModelChange)="updateStatus($event, day)">
+                                    <option [ngValue]="false" [disabled]="weekendDays.includes(day)">Open</option>
+                                    <option [ngValue]="true">Closed</option>
+                                </select>
+                            </div>
+
+                            <div [hidden]="timings[day].isClosed" class="time-inputs" style="display: flex;
+                                gap: 100px;">
+                                <div class="time-field">
+                                    <label>Opening Time:</label>
+                                    <input [(ngModel)]="timings[day].openingTime" name="openingTime{{ day }}"
+                                        type="time" required />
+                                </div>
+                                <div class="time-field">
+                                    <label>Closing Time:</label>
+                                    <input [(ngModel)]="timings[day].closingTime" name="closingTime{{ day }}"
+                                        type="time" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit">Save Timings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

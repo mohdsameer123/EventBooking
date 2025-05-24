@@ -1,0 +1,7 @@
+<div class="header-background">
+    <img class="goldbharat-icon" routerLink="/mobile/mobileview" src="../../../assets/logo.png" alt="">
+    <div *ngIf="isLogin" routerLink="/mobile/notifications"><img  class="notification-icon" src="../../../assets/Vector.png" alt=""><span class="nottification">{{notLength}}</span></div>
+    <button *ngIf="!isLogin" class="loginbotn" routerLink="/login">
+        Login
+      </button>
+</div>

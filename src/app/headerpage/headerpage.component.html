@@ -1,0 +1,258 @@
+<div class="navpositions" [ngStyle]="{'background-color': headerbackgroundColor}">
+  <div class="first-nav">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse collapsepositions" id="navbarNav">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-2">
+                <img routerLink="/" src="../../assets/logo.png" class="goldbharathimg" alt="" />
+              </div>
+              <div class="col-md-7">
+                <div class="listdiv">
+                  <ul class="underlist" [ngStyle]="{'background-color': activeBorderColor }">
+                    <li routerLink="/home" routerLinkActive="active">
+                      Home
+                    </li>
+                    <li routerLink="/aboutus" routerLinkActive="active">About Us</li>
+                    <li routerLink="/products" routerLinkActive="active">Products</li>
+                    <!-- <li routerLink="/locateus" routerLinkActive="active">
+                      Locate Us
+                    </li> -->
+                    <li routerLink="/policy" routerLinkActive="active">
+                      Privacy Policy
+                    </li>
+                    <!-- <li  *ngIf="!isLogin" routerLink="/predictions" routerLinkActive="active">
+                      Predictions
+                    </li> -->
+                    <li routerLink="/Booking" routerLinkActive="active">Contact Us</li>
+                    <!-- <li routerLink="/chart" routerLinkActive="active">
+                      Chart
+                    </li> -->
+
+                    <!-- <li routerLink="/margin" routerLinkActive="active">
+                      Margin
+                    </li>
+                    <li routerLink="/rate-alert" routerLinkActive="active">
+                      Rate Alert
+                    </li>
+                    <li routerLink="/Booking" routerLinkActive="active">
+                      Contact Us
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="mainbotn">
+                  <div *ngIf="isLogin">
+                    <div class="icon-container" routerLink="/notifications">
+                      <i class="fa-solid fa-bell fa-xl"></i>
+                      <span class="notColor">{{notLength}}</span>
+                    </div>
+
+                    <span class="userDetails">Wellcome, {{ userLog?.business_name.length > 10 ? (userLog?.business_name
+                      | slice:0:10) + '..' : userLog?.business_name }}</span>&nbsp;&nbsp;
+
+                    <!-- <button class="registerbotn" (click)="logOut()" routerLink="/">
+                      Logout
+                    </button> -->
+
+                    <!-- <i
+                      class="fa fa-sign-out signouticon"
+                      (click)="logOut()"
+                      routerLink="/"
+                      aria-hidden="true"
+                    ></i> -->
+                    <a class="user-logo-letter" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalLogout" >{{userLog?.business_name | slice: 0 : 1 }}</a>
+                    <!-- <img src="../../assets/goldsikkalogout.png" class="goldsikkaimage" alt="" data-bs-toggle="modal"
+                      data-bs-target="#exampleModalLogout" /> -->
+                  </div>
+
+                  <div *ngIf="!isLogin" class="mysecbotns">
+                    <button class="registerbotn" routerLink="/register">
+                      Register
+                    </button>
+                    <button class="loginbotn" [ngStyle]="{'background-color': loginButtonColor}"
+                      routerLink="/login">Login</button>
+                  </div>
+                  <!-- <img src="../../assets/goldsikka-app.jpg" alt="" />
+                  <img src="../../assets/goldsikka-app-store.jpg" alt="" /> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="second-nav">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" (click)="toggleForm()" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div>
+          <img routerLink="/" src="../../assets/logo.png" class="goldbharathimg" alt="" />
+        </div>
+
+        <div class="collapse navbar-collapse collapsepositions" id="navbarNav">
+          <div *ngIf="showForm">
+            <div class="container second-con">
+              <div class="row">
+                <div class="col-md-6 col-five">
+                  <div class="listdiv">
+                    <ul class="underlist" (click)="toggleForm()">
+                      <li routerLink="/home" routerLinkActive="active">Home</li>
+                      <div></div>
+                      <li routerLink="/aboutus" routerLinkActive="active">About Us</li>
+                      <div></div>
+                      <li routerLink="/products" routerLinkActive="active">Products</li>
+                      <div></div>
+                      <!-- <li routerLinkActive="active" routerLink="/locateus">Locate Us</li> -->
+                      <div></div>
+                      <li routerLinkActive="active" routerLink="/policy">Privacy Policy</li>
+                      <div></div>
+                      <li routerLink="/Booking" routerLinkActive="active">Contact Us</li>
+                      <div></div>
+                      <!-- <li routerLinkActive="active" routerLink="/chart">Chart</li> -->
+                      <!-- <div></div> -->
+                      <!-- <li routerLinkActive="active" routerLink="/margin">Margin</li>
+                      <div></div>
+                      <li routerLinkActive="active" routerLink="/rate-alert">Rate Alert</li>
+                      <div></div>
+                      <li routerLinkActive="active" routerLink="/booking">Contact Us</li> -->
+                      <div></div>
+                      <li *ngIf="isLogin" data-bs-toggle="modal" class="profileMobile"
+                        data-bs-target="#exampleModalLogout"> <i class="fa-solid fa-user"></i> Profile</li>
+                      <!-- <div></div> -->
+
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-four">
+                  <div class="mainbotn">
+                    <div *ngIf="!isLogin">
+                      <button class="registerbotn" routerLink="/register">
+                        Register
+                      </button>
+                      <button class="loginbotn" routerLink="/login">
+                        Login
+                      </button>
+                    </div>
+                    <div class="mainbotn mobile-mainbotn">
+                      <div *ngIf="isLogin">
+                        <span class="userDetails">Wellcome, {{ userLog?.business_name }}</span>&nbsp;&nbsp;
+                        <!-- <button class="registerbotn" (click)="logOut()" routerLink="/">
+                          Logout
+                        </button> -->
+
+                        <!-- <i
+                          class="fa fa-sign-out signouticon"
+                          (click)="logOut()"
+                          routerLink="/"
+                          aria-hidden="true"
+                        ></i> -->
+                        <a class="user-logo-letter" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalLogout" >{{userLog?.business_name | slice: 0 : 1 }}</a>
+                        <!-- <img src="../../assets/goldsikkalogout.png" class="goldsikkaimage" alt="" data-bs-toggle="modal"
+                          data-bs-target="#exampleModalLogout" /> -->
+
+                      </div>
+
+                      <div *ngIf="!isLogin">
+                        <button class="registerbotn" routerLink="/register">
+                          Register
+                        </button>
+                        <button class="loginbotn" routerLink="/login">Login</button>
+                      </div>
+                      <!-- <img src="../../assets/goldsikka-app.jpg" alt="" />
+                      <img src="../../assets/goldsikka-app-store.jpg" alt="" /> -->
+                    </div>
+                    <!-- <img src="../../assets/goldsikka-app.jpg" alt="" />
+                    <img src="../../assets/goldsikka-app-store.jpg" alt="" /> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="modal fade header-logoutnav" id="exampleModalLogout" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="my-profiles-div">
+          <p class="visitprofile">{{userLog?.proprietor_name | slice: 0 : 1 }}</p>
+          <div>
+            <h5 class="heading-profile-man">{{userLog?.proprietor_name}}</h5>
+            <p class="para-person-main">{{userLog?.user_id}}</p>
+            <p class="para-person-main">{{userLog?.email}}</p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position: absolute;
+          padding-right: 45px;
+          right: 0;
+          margin-top: -40px;
+      "></button>
+        </div>
+        <!-- *ngIf="userLog?.kyc_status!=2" -->
+        <div class="shield-div" *ngIf="userLog?.kyc_status==0" routerLink="/update-kyc" data-bs-dismiss="modal"
+          aria-label="Close">
+          <img src="../../assets/ShieldDone.png" class="shiledimages" alt="" />
+          <p>KYC</p>
+        </div>
+        <div class="shield-div" *ngIf="userLog?.kyc_status!=0" routerLink="/kyc_details" data-bs-dismiss="modal"
+          aria-label="Close">
+          <img src="../../assets/ShieldDone.png" class="shiledimages" alt="" />
+          <p>KYC</p>
+        </div>
+        <div class="power-play-div" routerLink="/orders" data-bs-dismiss="modal" aria-label="Close">
+          <img src="../../assets/checkout.png" class="power-on-off" alt="" />
+          <p>Orders</p>
+        </div>
+        <div class="power-play-div" routerLink="/margin" data-bs-dismiss="modal" aria-label="Close">
+          <img src="../../assets/margin.png" class="power-on-off" alt="" />
+          <p>Margin</p>
+        </div>
+        <div class="power-play-div" routerLink="/rate-alert" data-bs-dismiss="modal" aria-label="Close">
+          <img src="../../assets/alert.png" class="power-on-off" alt="" />
+          <p>Rate Alert</p>
+        </div>
+        <div class="power-play-div" routerLink="/history" data-bs-dismiss="modal" aria-label="Close">
+          <img src="../../assets/history.png" class="power-on-off" alt="" />
+          <p>Gold History</p>
+        </div>
+
+        <!-- <div class="power-play-div" routerLink="/setTimings" data-bs-dismiss="modal"
+        aria-label="Close">
+          <img
+            src="../../assets/time.png"
+
+            class="power-on-off"
+            alt=""
+          />
+          <p>Set Business Timings</p>
+        </div> -->
+
+        <div class="power-play-div" (click)="logOut()">
+          <img src="../../assets/powerplay.png" class="power-on-off" alt="" />
+          <p class="text-danger mb-0">Log Out</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.chart-container{
+
+    width: 60%;
+    margin: 0px auto;
+    margin-top: 135px;
+}
+
+.my-select {
+    background: #192259;
+    border-radius: 6px;
+    width: 100%;
+    padding: 13px 15px;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    border: none;
+    margin-bottom: 15px;
+    border: 1px solid #464E8A;
+}
+// .head{
+//     color: #ffffff;
+// }
+
+@media screen and (max-width: 500px) {
+    .chart-container{
+        width: initial;
+        padding: 0px 10px;
+    }
+    .canvas {
+        margin: 100px 0px;
+      }
+
+      .my-select{
+        padding: 5px 13px;
+      }
+}
+@media screen and (max-width: 680px) and (min-width: 500px) {
+    .chart-container{
+        width: initial;
+        padding: 0px 10px;
+    }
+}
+@media screen and (max-width: 768px) and (min-width: 680px) {
+    .chart-container{
+        width: initial;
+        padding: 0px 10px;
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .chart-container{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 1024px) and (min-width: 991px){
+    .chart-container{
+        width: 90%;
+    }
+}

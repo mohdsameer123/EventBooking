@@ -1,0 +1,83 @@
+<section class="first-sec">
+  <h2 class="head" [style.color]="rateAlert.headColor">Rate Alert</h2>
+
+  <div>
+    <form [formGroup]="rateAlertForm" (ngSubmit)="onSubmit()">
+      <select class="my-select" [style.background]="rateAlert.mySelectBackground"
+        [style.color]="rateAlert.mySelectColor" formControlName="order_type" (change)="isTypeGold($event)">
+        <option value="" disabled>Select</option>
+        <option value="Gold">Spot Gold</option>
+        <option value="Silver">Spot Silver</option>
+      </select>
+      <div class="validationError" *ngIf="
+            rateAlertForm.get('order_type')?.hasError('required') &&
+            rateAlertForm.get('order_type')?.touched
+          ">
+        is required.
+      </div>
+      <div class="box" [style.background]="rateAlert.boxBackGroundColor" [style.color]="rateAlert.goldLiveColor"
+        *ngIf="isGold">
+        <div class="d-flex">
+          <div>
+            <img src="../../assets/goldbusket.png" class="gold-busket" alt="" />
+          </div>
+          <div class="gold-live-main">
+            <p class="gold-live text-white">Gold Live Price Per Gram</p>
+            <!-- <h6 [style.color]="spotGoldColor" class="spot-para">₹ {{ spotGoldUpdate }}</h6> -->
+            <h6 *ngIf="!socketSubscription || !livePriceSubscription; else liveGoldRate" [style.color]="spotGoldColor"
+              class="spot-para">
+              ₹ {{ spotGoldUpdate }}
+            </h6>
+            <ng-template #liveGoldRate>
+              <h6 [style.color]="spotGoldColor" class="spot-para">₹ {{ spotGoldUpdate }}</h6>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="box" *ngIf="!isGold">
+        <div class="d-flex">
+          <div>
+            <img src="../../assets/Silverbusket.png" class="gold-busket" alt="" />
+          </div>
+          <div class="gold-live-main">
+            <p class="gold-live text-white">Silver Live Price Per 1kg</p>
+            <!-- <h6 [style.color]="spotSilverColor" class="spot-para">₹ {{ spotSilverUpdate }}</h6> -->
+            <h6 *ngIf="!socketSubscription || !livePriceSubscription; else liveSilverRate"
+              [style.color]="spotSilverColor" class="spot-para">
+              ₹ {{ spotSilverUpdate }}
+            </h6>
+            <ng-template #liveSilverRate>
+              <h6 [style.color]="spotSilverColor" class="spot-para">₹ {{ spotSilverUpdate }}</h6>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="text-start">
+        <label for="" class="labels" [style.color]="rateAlert.labels">Rate</label><br>
+      </div>
+      <input type="text" class="my-select" [style.background]="rateAlert.mySelectBackground"
+        [style.color]="rateAlert.mySelectColor" placeholder="Enter Your Rate" formControlName="book_rate"><br>
+      <div>
+
+      </div>
+      <div class="validationError" *ngIf="
+            rateAlertForm.get('book_rate')?.hasError('required') &&
+            rateAlertForm.get('book_rate')?.touched
+          ">
+        Amount is required.
+      </div>
+      <div class="validationError" *ngIf="
+            rateAlertForm.get('book_rate')?.hasError('pattern') &&
+            rateAlertForm.get('book_rate')?.touched
+          ">
+        Please enter a valid amount.
+      </div>
+      <button class="my-button" *ngIf="rateAlertForm.valid" [style.background]="rateAlert.myButtonBackground"><i
+          class="fa-solid fa-bell fa-lg"></i> Create Rate Alert</button>
+      <button class="my-button-invalid" *ngIf="!rateAlertForm.valid" disabled
+        [style.background]="rateAlert.myButtonInvalidBackground"><i class="fa-solid fa-bell fa-lg"></i> Create Rate
+        Alert</button>
+
+    </form>
+  </div>
+</section>

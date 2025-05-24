@@ -1,0 +1,401 @@
+@media (max-width: 500px){
+    .round{
+        background-color: #FAAD39;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        color: #ffffff;
+        text-align: center;
+   
+        margin: 0px auto;
+        margin-top: 100px;   
+    }
+    .user-name{
+        color: #ffffff;
+        // padding-top: 23px;
+    }
+    .profile-main{
+        display: flex;
+        justify-content: center !important;
+        text-align: center;
+
+    }
+    .name{
+        color: #E7E4E4;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px;
+    }
+    .num{
+        color: #E7E4E4;
+        font-size: 14px;
+        font-weight: 400;
+        padding-bottom: 10px;
+    }
+    span,
+    p {
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+    }
+    .account{
+        font-weight: 600;
+        font-size: 17px;
+        color: #E7E4E4;
+    }
+    .account-main{
+        padding: 40px 20px;
+    }
+
+    .find{
+        color: #FAAD39;
+    font-size: 13px;
+    font-weight: 400;
+    padding-top: 5px;
+    }
+
+    .acntInfo{
+        margin-top: 60px;
+    }
+
+    .main-kyc{
+        width: 100%;
+        background-color:  #10194E;
+        border-radius: 15px;
+        border: 1px solid  #464E8A;
+        height: 86px;
+        margin-top: 10px;
+        color: #ffffff;
+        padding: 24px 16px;
+        display: flex;
+        
+    }
+    .user-information{
+        color: #E7E4E4;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .usericon{
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+    .start-btn{
+        background-color: #FAAD39;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 100px;
+        padding: 4px 8px;
+        margin-left: 16px;
+        border: none;
+    }
+    .Complete{
+        color: #E7E4E4;
+        font-size: 13px;
+        font-weight: 400;
+        padding-top: 16px;
+    }
+    .keyboard{
+        height: 30px;
+        width: 30px;
+        margin-left: 36px;
+        margin-top: 5px;
+    }
+    .how-can{
+        color: #E7E4E4;
+        font-size: 17px;
+        font-weight: 600;
+        // padding-top: 25px;
+    }
+    .we-are{
+        color: #FAAD39;
+        font-size: 13px;
+        font-weight: 400;
+        // padding-top: 5px;
+    }
+    .create-new-main{
+        background-color: #10194E;
+        border: 1px solid #464E8A;
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .profile-img{
+        width: 35px;
+        height: 35px;
+    }
+    .create-para{
+        color: #E7E4E4;
+        font-size: 14px;
+        font-weight: 600;
+        padding-top: 10px;
+    }
+    .contact-us-btn{
+        background-color: #FAAD39;
+        border-radius: 5px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #ffffff;
+        border: none;
+    }
+
+    .logout-btn{
+        width: 100%;
+        background-color:  #E34C7D;
+        padding: 11px;
+        text-align: center;
+        border: none;
+        margin-top: 70px;
+        border-radius: 5px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    @media screen and (max-width:373px) and (min-width:320px){
+        .keyboard{
+            margin-left: 9px;
+        }
+        .start-btn{
+            font-size: 9px;
+        }
+        .Complete{
+            font-size: 12px;
+        }
+        .user-information{
+            font-size: 12px;
+        }      
+    }
+}
+.user-dropdown {
+    position: fixed;
+    top: 25px;
+    right: 55px;
+    z-index: 1000;
+}
+
+.user-trigger {
+    cursor: pointer;
+}
+
+.round-small {
+    width: 40px;
+    height: 40px;
+    background: #2563eb; // Changed to a nice blue
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+    
+    &:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+        transition: all 0.3s ease;
+    }
+}
+
+.user-details {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 250px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: none;
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.user-details.show {
+    display: block;
+    transform: translateY(0);
+}
+
+.user-header {
+    padding: 24px;
+    background: linear-gradient(145deg, #051630, #1a48af);; // Changed gradient colors
+    border-radius: 16px;
+    color: white;
+    text-align: center;
+    
+    .round {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 3px solid white;
+        
+        .user-name {
+            color: #2563eb;
+            font-size: 26px;
+            margin: 0;
+            font-weight: 600;
+        }
+    }
+    
+    .name {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0 0 8px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    .num {
+        font-size: 14px;
+        margin: 4px 0;
+        opacity: 0.9;
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+.user-actions {
+    padding: 12px;
+
+    .action-btn {
+        width: 100%;
+        background: #FAAD39;  // Orange background to match other buttons
+        color: #FFFFFF;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: #F59E1D;  // Slightly darker orange on hover
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(250, 173, 57, 0.2);
+        }
+
+        &:active {
+            background: #E59016;  // Even darker orange when clicked
+            transform: translateY(0);
+        }
+    }
+}
+.main-kyc {
+    background: #10194E;  // Dark blue background
+    border: 1px solid #464E8A;  // Lighter border color
+    border-radius: 8px;
+    margin: 16px 0;
+    transition: all 0.2s ease;
+
+
+    &:hover {
+        border-color: #5A63A9;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.kyc-content {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.kyc-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.kyc-right{
+    margin-left: 19px !important;
+}
+
+.icon-wrapper {
+    width: 40px;
+    height: 40px;
+    // background: rgba(250, 173, 57, 0.15);  // Semi-transparent orange background
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:-10px;
+
+    .usericon {
+        width: 50px;
+        height: 30px;
+        filter: invert(72%) sepia(32%) saturate(1391%) hue-rotate(346deg) brightness(96%) contrast(92%);  // Changes icon color to #FAAD39
+    }
+}
+
+.kyc-text {
+    h3 {
+        color: #E7E4E4;  // Light gray for better contrast
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 0 4px 0;
+    }
+
+    p {
+        color: #A0A3BD;  // Lighter gray for secondary text
+        font-size: 13px;
+        margin: 0;
+    }
+}
+
+.start-btn {
+    background: #FAAD39;  // Orange button
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #F59E1D;  // Slightly darker orange on hover
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        background: #E59016;  // Even darker orange when clicked
+        transform: translateY(0);
+    }
+}
+
+// Mobile responsiveness
+@media (max-width: 480px) {
+    .main-kyc {
+        margin: 12px 0;
+    }
+
+    .kyc-content {
+        padding: 12px;
+    }
+
+    .kyc-text {
+        h3 {
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .start-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}

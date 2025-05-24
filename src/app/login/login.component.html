@@ -1,0 +1,105 @@
+<section class="mainclass" [ngStyle]="{'background':backgroundColor}" *ngIf="otplayout">
+
+  <div class="loginmaindiv" [ngStyle]="{'background':cardBackGroundColor}">
+    <div class="back-arrow" (click)="backToPage()">
+      <img class="backarrow-img" src="../../assets/back_arrow.png" alt="">
+    </div>
+    <form>
+      <div class="admin_login_logo" routerLink="/mobile/mobileview" *ngIf="isMobile">
+        <img src="../../assets/logo.png" />
+      </div>
+      <div class="admin_login_logo" routerLink="/" *ngIf="!isMobile">
+        <img src="../../assets/logo.png" />
+      </div>
+
+      <div class="otp-verifys">
+        <h6 class="otp-verifications">OTP Verification</h6>
+        <p class="verification-code">
+          Enter the verification code we just sent on your number
+          <span class="number_color" [ngStyle]="{'color': color}">+91 {{resphone}}</span>
+        </p>
+      </div>
+
+      <div class="phone-input-div mt-4 mb-4 text-center">
+        <ng-otp-input #otpInput (onInputChange)="onOtpChange($event)" [config]="{ length: 6, allowNumbersOnly: true }"
+          appNumericInput></ng-otp-input><br>
+        <br>
+        <p class="time-remains text-danger text-end">{{ remainingTime }}</p>
+        <!-- <button *ngIf="isResend" (click)="sendotp()" type="button" class="btn btn-info">Resend otp</button> -->
+      </div>
+      <div class="ResendDiv" *ngIf="isResend">
+        <p>Didn’t received code? <span class="Resend-span" (click)="sendotp()">Resend</span></p>
+      </div>
+    </form>
+  </div>
+
+</section>
+<section class="mainclass" [ngStyle]="{'background':backgroundColor}" *ngIf="!otplayout">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="loginmaindiv" [ngStyle]="{'background':cardBackGroundColor}">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="admin_login_logo" routerLink="/mobile/mobileview" *ngIf="isMobile">
+            <img src="../../assets/logo.png" />
+          </div>
+          <div class="admin_login_logo" routerLink="/" *ngIf="!isMobile">
+            <img src="../../assets/logo.png" />
+          </div>
+          <div class="admin_login_title">
+            <h6>Welcome back! Glad to see you, Again</h6>
+          </div>
+          <div class="login-input-div">
+            <input [ngStyle]="{'background':cardBackGroundColor}" placeholder=" Enter Your Number" type="number" class="input-filed" maxlength="10" minlength="10"
+              formControlName="phone" />
+            <span class="number-icon">
+              <p>+91 |</p>
+            </span>
+          </div>
+          <div class="validationError" *ngIf="
+            loginForm.get('phone')?.hasError('required') &&
+            loginForm.get('phone')?.touched
+          ">
+            Mobile number is required.
+          </div>
+          <div class="validationError" *ngIf="
+            loginForm.get('phone')?.hasError('pattern') &&
+            loginForm.get('phone')?.touched
+          ">
+            Please enter a valid mobile number.
+          </div>
+          <div class="loginbotn-div">
+            <button class="login-btn" [ngStyle]="{'background-color': color}" *ngIf="loginForm.valid" type="submit">Login</button>
+            <button class="login-btn-invalid" *ngIf="!loginForm.valid" type="submit"
+              [disabled]="!loginForm.valid">Login</button>
+
+          </div>
+          <div class="admin_login_content">
+            <p>
+              Don’t have an account?
+              <span class="Register-spans" [ngStyle]="{'color': color}" routerLink="/register">Register</span>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <div class="otp-verifys">
+        <h6 class="otp-verifications">OTP Verification</h6>
+        <p class="verification-code">
+          Enter the verification code we just sent on your number +91
+          9515206990
+        </p>
+      </div>
+      <div class="myinput-tags">
+        <input type="number" class="otp-inputs" />
+        <input type="number" class="otp-inputs" />
+        <input type="number" class="otp-inputs" />
+        <input type="number" class="otp-inputs" />
+      </div>
+      <div class="my-verify-div">
+        <button class="verify-botns">Verify</button>
+      </div>
+      <div class="ResendDiv">
+        <p>Didn’t received code? <span class="Resend-span">Resend</span></p>
+      </div> -->

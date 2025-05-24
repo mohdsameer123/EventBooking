@@ -1,0 +1,60 @@
+<section class="loacte-section" [style.background]="backGroundColor.loacteSectionBackgroundColor">
+  <p class="locate-heading">Locate Us</p>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 firstcolumn-ones">
+
+        <iframe
+          [src]="url"
+          height="100%"
+          class="mymap-image"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <div class="col-md-6 firstcolumn-ones">
+        <div class="icon-box-div">
+          <div class="custom_wraps">
+            <div class="mywrap">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="toches-sec">
+              <p class="get-touchs">Get In Touch</p>
+              <p class="what-app-para">
+                Whatsapp No: <a >+91 {{phoneNumbers}}</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="custom_wraps mt-4">
+            <div class="mywrap">
+              <i class="fa-solid fa-envelope"></i>              <!-- <i class="fa fa-envelope-o" aria-hidden="true"></i> -->
+            </div>
+            <div class="toches-sec">
+              <p class="get-touchs">Email Us</p>
+              <p class="what-app-para">
+                <a>{{email}} </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="custom_wraps mt-4">
+            <div class="mywrap-next">
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </div>
+            <div class="toches-sec">
+              <p class="get-touchs-address">Address</p>
+              <p class="address-paragraph">
+                {{address}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

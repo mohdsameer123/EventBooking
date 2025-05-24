@@ -1,0 +1,646 @@
+<section class="myclasssection pt-5">
+  <div class="maindiv">
+    <div class="container">
+      <p class="Real-Time-Gold text-center" [style.color]="backGroundColor?.color">Real-Time Gold and Silver Live
+        Prices</p>
+      <div class="row">
+
+        <div class="col-md-4 col-4 first-borders-box">
+          <div class="firstbox" [style.background]="backGroundColor?.cardBackGroundColor">
+            <p class="spot-box spot-bg">SPOT GOLD</p>
+            <p class="price-money" [style.color]="spotGoldColor">
+              $ {{ spotGold | number: '1.2-2'}}
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-4 second-borders-box">
+          <div class="firstbox" [style.background]="backGroundColor?.cardBackGroundColor">
+            <p class="spot-box spot-bg">SPOT SILVER</p>
+            <p class="price-money-one" [style.color]="spotSilverColor">
+              $ {{ spotSilver | number: '1.2-2'}}
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4  col-4 third-borders-box">
+          <div class="firstbox" [style.background]="backGroundColor?.cardBackGroundColor">
+            <p class="spot-box spot-bg">SPOT RUPEE</p>
+            <p class="price-money-two" [style.color]="spotINRColor">
+              ₹ {{ spotINR | number: '1.2-2'}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="commodiates-section">
+      <div class="container">
+        <p class="date-time-commed"> {{ now | customDateTime }}</p>
+        <p class="commedies-paragraph text-center" [style.color]="backGroundColor?.color">Commodities on {{ companyname
+          }}</p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="box" [style.background]="backGroundColor?.cardBackGroundColor">
+              <div class="justify-content-center">
+                <!-- <div>
+                  <img src="../../assets/goldbusket.png" class="gold-busket" alt="" />
+                </div> -->
+                <p class="spot-box live-gold-bg">GOLD</p>
+                <div class="gold-live-main gold d-flex align-items-center justify-content-between p-2 h-2">
+                  <div>
+                      <p class="gold-live">Live Price</p>
+                      <p class="gold-live">Per Gram 999</p>
+                  </div>
+
+                  <h6 *ngIf="!socketSubscription || !livePriceSubscription; else liveGoldRate"
+                    [style.color]="spotGoldColor" class="spot-para">
+                    ₹ {{ spotGoldUpdate }}
+                  </h6>
+                  <ng-template #liveGoldRate>
+                    <h6 [style.color]="spotGoldColor" class="spot-para">₹ {{ spotGoldUpdate }}</h6>
+                  </ng-template>
+                </div>
+              </div>
+
+              <div *ngIf="shouldShowAlert && treding" class="alert-message timingsAlert">Trading is closed for now. You
+                can Trade between Monday-Friday 9:30 AM - 11:30 PM.</div>
+              <!-- <div *ngIf="profileDetails == undefined" class="alert-message">User not Loggedin Please Login</div> -->
+              <div *ngIf="isLogin && isWeekendDay" class="text-danger">Trading is closed for today. You can Trade
+                between Monday-Friday 9:30 AM - 11:30 PM. </div>
+
+
+              <div class="bookgold-main-btn" *ngIf="isLogin && treding">
+
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="book-gold-btn"
+                  *ngIf="kyc_status == 2" (click)="callLimit('Gold')" data-bs-toggle="modal"
+                  data-bs-target="#exampleModalGold">Book Gold</button>
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="book-gold-btn"
+                  *ngIf="kyc_status == 0" type="button" data-bs-toggle="modal" data-bs-target="#updateKyx">Book
+                  Gold</button>
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="book-gold-btn"
+                  *ngIf="kyc_status == 1" type="button" data-bs-toggle="modal" data-bs-target="#Kyxpending">Book
+                  Gold</button>
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="book-gold-btn"
+                  *ngIf="kyc_status == 3" type="button" data-bs-toggle="modal" data-bs-target="#Kyxrejected">Book
+                  Gold</button>
+
+                <!-- Buy Gold Buttons -->
+                <button [style.background]="backGroundColor.cardBackGroundColor" class="buy-gold-btn"
+                  *ngIf="kyc_status == 2" (click)="callLimit('Gold')" data-bs-toggle="modal"
+                  data-bs-target="#exampleModalSilver">Buy Gold</button>
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="buy-gold-btn"
+                  *ngIf="kyc_status == 0" type="button" data-bs-toggle="modal" data-bs-target="#updateKyx">Buy
+                  Gold</button>
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="buy-gold-btn"
+                  *ngIf="kyc_status == 1" type="button" data-bs-toggle="modal" data-bs-target="#Kyxpending">Buy
+                  Gold</button>
+                <button [style.background]="backGroundColor?.cardBackGroundColor" class="buy-gold-btn"
+                  *ngIf="kyc_status == 3" type="button" data-bs-toggle="modal" data-bs-target="#Kyxrejected">Buy
+                  Gold</button>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="box" [style.background]="backGroundColor?.cardBackGroundColor">
+              <div class="justify-content-center">
+                <!-- <div>
+                  <img src="../../assets/Silverbusket.png" class="gold-busket" alt="" />
+                </div> -->
+                <p class="spot-silver live-silver-bg">SILVER</p>
+                <div class="gold-live-main silver d-flex align-items-center justify-content-between p-2 h-2">
+                  <div>
+                    <p class="gold-live">Live Price</p>
+                    <p class="gold-live"> Per Kg</p>
+                  </div>
+                  <h6 *ngIf="!socketSubscription || !livePriceSubscription; else liveSilverRate"
+                    [style.color]="spotSilverColor" class="spot-para">
+                    ₹ {{ spotSilverUpdate }}
+                  </h6>
+                  <ng-template #liveSilverRate>
+                    <h6 [style.color]="spotSilverColor" class="spot-para">₹ {{ spotSilverUpdate }}</h6>
+                  </ng-template>
+                </div>
+              </div>
+
+              <div *ngIf="shouldShowAlert && treding" class="alert-message timingsAlert">Trading is closed for now. You
+                can Trade between Monday-Friday 9:30 AM - 11:30 PM.</div>
+              <!-- <div *ngIf="profileDetails == undefined" class="alert-message">User not Loggedin Please Login</div> -->
+              <div *ngIf="isLogin && isWeekendDay" class="text-danger">Trading is closed for today. You can Trade
+                between Monday-Friday 9:30 AM - 11:30 PM. </div>
+
+
+              <div class="bookgold-main-btn" *ngIf="isLogin && treding">
+                <button class="buy-silver-btn" *ngIf="kyc_status == 2" (click)="callLimit('Silver')"
+                  data-bs-toggle="modal" data-bs-target="#exampleModalmygold">Book Silver</button>
+                <button class="buy-silver-btn" *ngIf="kyc_status == 0" type="button" data-bs-toggle="modal"
+                  data-bs-target="#updateKyx">Book Silver</button>
+                <button class="buy-silver-btn" *ngIf="kyc_status == 1" type="button" data-bs-toggle="modal"
+                  data-bs-target="#Kyxpending">Book Silver</button>
+                <button class="buy-silver-btn" *ngIf="kyc_status == 3" type="button" data-bs-toggle="modal"
+                  data-bs-target="#Kyxrejected">Book Silver</button>
+                <!-- Modal -->
+                <div class="modal fade" id="updateKyx" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="staticBackdropLabel">KYC Required</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body text-center">
+                        <a class="btn btn-secondary" routerLink="/update-kyc" data-bs-dismiss="modal">Click Here</a>
+                        <p> to complete your KYC</p>
+                      </div>
+                      <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <!-- <button type="button" class="btn btn-primary">Click Here</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- model end -->
+                <button class="buy-silver-btn" *ngIf="kyc_status == 2" (click)="callLimit('Silver')"
+                  data-bs-toggle="modal" data-bs-target="#exampleModalmysilver">Buy Silver</button>
+                <button class="buy-silver-btn" *ngIf="kyc_status == 0" type="button" data-bs-toggle="modal"
+                  data-bs-target="#updateKyx">Buy Silver</button>
+                <button class="buy-silver-btn" *ngIf="kyc_status == 1" type="button" data-bs-toggle="modal"
+                  data-bs-target="#Kyxpending">Buy Silver</button>
+                <button class="buy-silver-btn" *ngIf="kyc_status == 3" type="button" data-bs-toggle="modal"
+                  data-bs-target="#Kyxrejected">Buy Silver</button>
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="Kyxpending" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="staticBackdropLabel">KYC Pending</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body text-center">
+                        <p> Awaiting KYC approval.</p>
+                        <p> Please contact us for further assistance!</p>
+                        <!-- <a class="btn text-danger" routerLink="/update-kyc" data-bs-dismiss="modal">Click Here</a> -->
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Click Here</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- model end -->
+                <!-- Modal -->
+                <div class="modal fade" id="Kyxrejected" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="staticBackdropLabel">KYC Rejected</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body text-center">
+                        <p>Your KYC has been rejected</p>
+                        <p>To update</p>
+
+                        <a class="btn btn-secondary" outerLink="/update-kyc" href="/update-kyc">Click
+                          Here</a>
+
+                      </div>
+                      <div class="modal-footer">
+                        <!-- <button type="button" class="btn text-white font-weight-600" data-bs-dismiss="modal">Close</button> -->
+                        <!-- <button type="button" class="btn btn-primary">Click Here</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- model end -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+
+
+<!-- MODALS for buy book gold silver start -->
+
+<div class="modal fade" id="exampleModalGold" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h5 class="modal-title myheading-models" id="exampleModalLabel">
+          Book Gold
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <form action="" [formGroup]="bookGolgForm" (ngSubmit)="onGoldSubmit('gold')">
+          <div class="pop-up-gold">
+            <img src="../../assets/goldone.png" alt="" />
+            <h6 class="heading-price-gram">Gold Live Price Per Gram</h6>
+            <h4 class="price-popup-counter">
+              ₹ {{ stayBuyGoldRate }}
+            </h4>
+          </div>
+          <p style="color:red;font-weight:600;text-align: left;">Price will be locked for : {{ timerBuy }} seconds</p>
+          <select class="formselect-gold" formControlName="quantity_purchased">
+            <!-- (change)="calcAmountForTotal($event)" -->
+            <option value="" disabled>Quantity</option>
+            <option *ngFor="let limit of goldMaxLimit" value="{{limit}}">{{limit}} Grams</option>
+          </select>
+
+          <div class="validationError" *ngIf="
+              bookGolgForm.get('quantity_purchased')?.hasError('required') &&
+              bookGolgForm.get('quantity_purchased')?.touched
+            ">
+            Quantity is required.
+          </div>
+          <br />
+          <br />
+          <p class="fixAmount">
+            The maximum range for placing buy orders should be within a difference of <b>110 Rs</b> from the live gold
+            price.
+            For example, if the live gold price is 6200 Rs, users can place buy gold orders for 6090 Rs or more, which
+            is acceptable. However, if the price falls below 6090 Rs, placing buy gold orders is not acceptable.
+          </p>
+          <!-- <p *ngIf="isTotal">Current Live Rate Total
+                        Amount : <b class="bts">{{fAmount}}</b></p> -->
+          <input type="text" formControlName="book_rate" name="" id=""
+            (input)="userAmount(bookGolgForm.get('book_rate')?.value)" class="formselect-gold"
+            placeholder="Enter your amount" />
+          <div class="validationError" *ngIf="
+              bookGolgForm.get('book_rate')?.hasError('required') &&
+              bookGolgForm.get('book_rate')?.touched
+            ">
+            Amount is required.
+          </div>
+          <div class="validationError" *ngIf="
+              bookGolgForm.get('book_rate')?.hasError('pattern') &&
+              bookGolgForm.get('book_rate')?.touched
+            ">
+            Please enter a valid amount.
+          </div>
+          <!-- <div class="validationError" *ngIf="
+              bookGolgForm.get('book_rate')?.hasError('maxlength') &&
+              bookGolgForm.get('book_rate')?.touched
+            ">
+            Please enter a valid amount.
+          </div>
+          <div class="validationError" *ngIf="
+              bookGolgForm.get('book_rate')?.hasError('minlength') &&
+              bookGolgForm.get('book_rate')?.touched
+            ">
+            Please enter a valid amount.
+          </div> -->
+          <button class="buy-gold-popup" *ngIf="bookGolgForm.invalid" [disabled]="bookGolgForm.invalid">
+            Book
+          </button>
+          <button class="buy-gold-popup-valid" *ngIf="bookGolgForm.valid && isAmountLessThan110" type="submit"
+            data-bs-dismiss="modal">
+            Book
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalmysilver" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h5 class="modal-title myheading-models" id="exampleModalLabel">
+          Buy Silver
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" [formGroup]="buyGolgForm" (ngSubmit)="onBuySubmit('Silver')">
+          <div class="pop-up-gold">
+            <img src="../../assets/Silverone.png" alt="" />
+            <h6 class="heading-price-gram">Silver Live Price Per 1kg</h6>
+            <h4 class="price-popup-counter-second">
+              {{ stayBuySilverRate | currency : "INR" : "symbol" : "1.0-2" }}
+            </h4>
+          </div>
+          <!-- <p style="color:#fff">{{ spotSilverUpdate | currency : "INR" : "symbol" : "1.0-2" }}</p> -->
+          <p style="color:red;font-weight:600;text-align: left;">Price will be locked for : {{ timerBuy }} seconds</p>
+          <select class="formselect-gold" formControlName="quantity_purchased">
+            <option value="" disabled>Quantity</option>
+
+            <!-- Placeholder option -->
+
+            <option *ngFor="let limit of silverMaxLimit" value="{{limit}}">{{limit}} Grams</option>
+
+          </select>
+          <div class="validationError" *ngIf="
+              buyGolgForm.get('quantity_purchased')?.hasError('required') &&
+              buyGolgForm.get('quantity_purchased')?.touched
+            ">
+            Quantity is required.
+          </div>
+          <button class="buy-gold-popup" *ngIf="buyGolgForm.invalid" [disabled]="buyGolgForm.invalid">
+            Buy
+          </button>
+          <button class="buy-gold-popup-valid" *ngIf="buyGolgForm.valid" data-bs-dismiss="modal">
+            Buy
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalmygold" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h5 class="modal-title myheading-models" id="exampleModalLabel">
+          Book Silver
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="closeModal()"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" [formGroup]="bookSilverForm" (ngSubmit)="onGoldSubmit('silver')">
+          <div class="pop-up-gold">
+            <img src="../../assets/Silverone.png" alt="" />
+            <h6 class="heading-price-gram">Silver Live Price Per 1kg</h6>
+            <h4 class="price-popup-counter-second">
+              {{ stayBuySilverRate | currency : "INR" : "symbol" : "1.0-2" }}
+            </h4>
+          </div>
+          <p style="color:red;font-weight:600;text-align: left;">Price will be locked for : {{ timerBuy }} seconds</p>
+          <select class="formselect-gold" formControlName="quantity_purchased">
+            <option value="" disabled>Quantity</option>
+            <option *ngFor="let limit of silverMaxLimit" value="{{limit}}">{{limit}} Grams</option>
+          </select>
+          <div class="validationError" *ngIf="
+              bookSilverForm.get('quantity_purchased')?.hasError('required') &&
+              bookSilverForm.get('quantity_purchased')?.touched
+            ">
+            Quantity is required.
+          </div>
+          <br />
+          <br />
+          <p class="fixAmount">
+            The maximum range for placing buy orders should be within a difference of <b>1000 Rs</b> from the live
+            silver price.
+            For example, if the live silver price is 90000 Rs, users can place buy silver orders for 89000 Rs or more,
+            which
+            is acceptable. However, if the price falls below 89000 Rs, placing buy silver orders is not acceptable.
+          </p>
+          <input type="text" formControlName="book_rate" name="" id=""
+            (input)="userAmountSilver(bookSilverForm.get('book_rate')?.value)" class="formselect-gold"
+            placeholder="Enter your amount" />
+          <div class="validationError" *ngIf="
+              bookSilverForm.get('book_rate')?.hasError('required') &&
+              bookSilverForm.get('book_rate')?.touched
+            ">
+            Amount is required.
+          </div>
+          <div class="validationError" *ngIf="
+              bookSilverForm.get('book_rate')?.hasError('pattern') &&
+              bookSilverForm.get('book_rate')?.touched
+            ">
+            Please enter a valid amount.
+
+
+          </div>
+          <!-- <div class="validationError" *ngIf="
+              bookSilverForm.get('book_rate')?.hasError('maxlength') &&
+              bookSilverForm.get('book_rate')?.touched
+            ">
+            Please enter a valid amount.
+          </div>
+          <div class="validationError" *ngIf="
+              bookSilverForm.get('book_rate')?.hasError('minlength') &&
+              bookSilverForm.get('book_rate')?.touched
+            ">
+            Please enter a valid amount.
+          </div> -->
+          <button class="buy-gold-popup" *ngIf="bookSilverForm.invalid" [disabled]="bookSilverForm.invalid">
+            Book
+          </button>
+          <button class="buy-gold-popup-valid" *ngIf="bookSilverForm.valid && isAmountLessThan1000" type="submit"
+            data-bs-dismiss="modal">
+            Book
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalSilver" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h5 class="modal-title myheading-models" id="exampleModalLabel">
+          Buy Gold
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" [formGroup]="buyGolgForm" (ngSubmit)="onBuySubmit('Gold')">
+          <div class="pop-up-gold">
+            <img src="../../assets/goldone.png" alt="" />
+            <h3 class="heading-price-gram">Gold Live Price Per Gram</h3>
+            <h4 class="price-popup-counter">
+              {{ stayBuyGoldRate | currency : "INR" : "symbol" : "1.0-2" }}
+            </h4>
+            <!-- <p style="color:#fff">{{ spotGoldUpdate | currency : "INR" : "symbol" : "1.0-2" }}</p> -->
+          </div>
+          <p style="color:red;font-weight:600;text-align: left;">Price will be locked for : {{ timerBuy }} seconds</p>
+
+          <select class="formselect-gold" formControlName="quantity_purchased">
+            <option value="">Quantity</option>
+            <option *ngFor="let limit of goldMaxLimit" value="{{limit}}">{{limit}} Grams</option>
+          </select>
+          <div class="validationError" *ngIf="
+              buyGolgForm.get('quantity_purchased')?.hasError('required') &&
+              buyGolgForm.get('quantity_purchased')?.touched
+            ">
+            Quantity is required.
+          </div>
+          <button class="buy-gold-popup" *ngIf="buyGolgForm.invalid" [disabled]="buyGolgForm.invalid">
+            Buy
+          </button>
+          <button class="buy-gold-popup-valid" *ngIf="buyGolgForm.valid" data-bs-dismiss="modal">
+            Buy
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODALS for buy book gold silver end -->
+<!-- <section class="our-products-section">
+  <p class="products-paragraph">Our Products</p>
+  <div class="text-center">
+    <img src="../../assets/bhavav.png" class="bhavanimg" alt="" />
+  </div>
+  <div class="container images-section">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="../../assets/goldbars.png" class="goldbarsimg" alt="" />
+        <p class="goldbars-paragraph">Gold Bars</p>
+        <p class="text-white text-center">Bank Metal</p>
+        <p class="text-white text-center">999 Purity</p>
+      </div>
+
+      <div class="col-md-3">
+        <img src="../../assets/silverbars.png" class="goldbarsimg" alt="" />
+        <p class="goldbars-paragraph">Silver Bars</p>
+        <p class="text-white text-center">Bank Metal</p>
+        <p class="text-white text-center">999 Purity</p>
+      </div>
+
+      <div class="col-md-3">
+        <img src="../../assets/goldcoins.png" class="goldbarsimg" alt="" />
+        <p class="goldbars-paragraph">Gold Coins</p>
+        <p class="text-white text-center">Bank Metal</p>
+        <p class="text-white text-center">999 Purity</p>
+      </div>
+
+      <div class="col-md-3">
+        <img src="../../assets/silvercoins.png" class="goldbarsimg" alt="" />
+        <p class="goldbars-paragraph">Silver Coins</p>
+        <p class="text-white text-center">Bank Metal</p>
+        <p class="text-white text-center">999 Purity</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="download-section">
+  <p class="download-paragraph">Download Our App</p>
+  <div class="text-center">
+    <img src="../../assets/bhavav.png" class="bhavanimg" alt="" />
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6">
+        <!-- <img src="../../assets/goldbharath-mobile.png" class="goldbahrath-mobileimage" alt="" /> -->
+      </div>
+      <div class="col-md-6 text-center">
+        <div>
+          <img src="../../assets/Artboardstar.png" alt="" />
+        </div>
+        <div>
+          <a href="https://play.google.com/store/apps/details?id=com.goldsikka.gbharath&hl=en" target="_blank">
+            <img src="../../assets/goldbahratgoogleplay.png" class="googleplay" alt="" />
+          </a>
+        </div>
+        <div>
+          <a href="https://apps.apple.com/gb/app/goldbharat/id6443963704" target="_blank">
+            <img src="../../assets/Goldbaharatappstore.png" class="googleplay" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="licence-and-certificate">
+  <p class="products-paragraph">Licence & Certificate</p>
+  <div class="text-center">
+    <img src="../../assets/bhavav.png" class="bhavanimg" alt="" />
+  </div>
+
+  <div class="container">
+    <div class="img">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 col-6">
+          <img src="../../assets/licence-1.png" alt="">
+        </div>
+        <div class="col-md-2 col-6">
+          <img src="../../assets/licence-2.png" alt="">
+        </div>
+        <div class="col-md-2 col-6">
+          <img src="../../assets/licence-3.png" alt="">
+        </div>
+        <div class="col-md-2 col-6">
+          <img src="../../assets/licence-4.png" alt="">
+        </div>
+        <div class="col-md-2 col-6">
+          <img src="../../assets/licence-5.png" alt="">
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="our-products-section">
+  <p class="products-paragraph">Contact Us</p>
+  <div class="text-center">
+    <img src="../../assets/bhavav.png" class="bhavanimg" alt="" />
+  </div>
+
+  <div class="container customsection">
+    <div class="row">
+      <div class="col-md-4 box-col-one">
+        <div class="phone-card">
+          <p class="contact-number">Contact Number</p>
+          <div class="contact-information ">
+            <span class="contact-span" >
+              <img src="../../assets/phone.svg" alt="Phone Icon" />
+              <p *ngFor="let phone of phoneNumbers; let i = index; let last = last">
+                <a class="telecontact">{{ phone }}<span *ngIf="!last"> /</span></a>
+              </p>
+
+            </span>
+          </div>
+          <p class="contact-number">Timings</p>
+          <span class="time-span">
+            <img src="../../assets/on-time.svg" alt="" />
+            <p class="clock-time-para">{{ timings }}</p>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 box-col-one">
+        <div class="phone-card">
+          <p class="contact-number">WhatsApp Number</p>
+          <div class="contact-information justify-content-start">
+            <span class="contact-span ">
+              <img src="../../assets/whatsapp.svg" alt="" />
+              <p><a [href]="getWhatsAppLink(whatsappNumber)" class="telecontact" target="_blank">{{ whatsappNumber
+                  }}</a></p>
+            </span>
+          </div>
+          <p class="contact-number">Email ID</p>
+          <span class="time-span justify-content-start">
+            <img src="../../assets/gmail.svg" alt="" />
+            <p>
+              <a class="clock-time-para">{{ email }}</a>
+            </p>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 box-col-three">
+        <div class="phone-card">
+          <span class="home-address-div">
+            <!-- <img src="../../assets/home-address.png" alt="" /> -->
+            <p class="contact-number">Address</p>
+          </span>
+          <p class="gold-limited-para">
+            <a>{{ address }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

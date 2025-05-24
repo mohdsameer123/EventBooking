@@ -1,0 +1,29 @@
+<div class="chart-container">
+    <div class="container">
+
+        <div class="row">
+            <h2 class="head" [style.color]="charts.headColor">Charts</h2>
+
+            <div class="col-md-6">
+                <select class="my-select" [style.background]="charts.mySelectGoldBackground"  [style.color]="charts.mySelectGoldColor" name="timeSelect" (change)="isTypeGold($event)">
+                   <option value="" disabled>Select</option>
+                   <option value="15">15 Minute's</option>
+                   <option value="30">30 Minute's</option>
+                   <option value="9">1 Day</option>
+               </select>
+            </div>
+            <div class="col-md-6">
+                <select class="my-select" name="typeSelect" (change)="isTypeGold($event)">
+                   <option value="" disabled>Select</option>
+                   <option value="gold_24">Gold (24Carat)</option>
+                   <!-- <option value="gold_22">Gold (22Carat)</option> -->
+                   <option value="silver">Silver</option>
+               </select>
+            </div>
+        </div>
+
+    </div>
+    <canvas class="canvas" id="MyChart">
+        {{ chart }}
+      </canvas>
+</div>

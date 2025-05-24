@@ -1,0 +1,814 @@
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-body text-center">
+          <h5 class="card-title m-b-0">Orders History</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <div class="buy">
+              <label for="">Select Order Type</label><br />
+              <select class="formselect-gold-value" name="" id="" (change)="updateBuy($event)">
+                <option class="optionTake" value="BUY">BUY</option>
+                <option class="optionTake" value="BOOK">BOOK</option>
+              </select>
+            </div>
+          </div>
+          <!-- <div class="col-md-2">
+            <div class="bank-details">
+              <p data-bs-toggle="modal" data-bs-target="#bankDetails" class="click">Our Bank Details</p>
+              <div class="modal fade" id="bankDetails" tabindex="-1" aria-labelledby="exampleModalLabelConform"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content checkColor">
+                    <div class="modal-header">
+                      <h3 class="modal-title myheading-models" id="exampleModalLabel">Our Bank Details</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h3>ICIC Bank</h3>
+                          <p><b>A/C No : </b> 111805001522</p>
+                          <p><b>IFSC CODE : </b> ICIC0001118</p>
+                          <p><b>Branch : </b> East Marredpally</p>
+                        </div>
+                        <div class="col-md-6">
+                          <h3>SBI Bank</h3>
+                          <p><b>A/C No : </b> 39523271424</p>
+                          <p><b>IFSC CODE : </b> SBIN0020299</p>
+                          <p><b>Branch : </b> East Marredpally</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div *ngIf="noData" class="noData">
+          <img src="../../assets/Animation - 1712133187330.gif" alt="" />
+          <h3 class="text-danger text-center"></h3>
+        </div>
+        <div class="table-responsive" *ngIf="!noData">
+          <div class="table-container">
+            <table class="table text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Order Id</th>
+                  <th scope="col">Date & Time</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Quantity (Grams)</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Total Price</th>
+                  <th scope="col" *ngIf="!isTrade">Penalty</th>
+                  <th scope="col" *ngIf="!isTrade">Payment Status</th>
+                  <th scope="col">Order Status</th>
+
+                  <!-- <th scope="col" *ngIf="!isTrade">Action</th> -->
+                </tr>
+              </thead>
+              <tbody class="customtable">
+                <tr *ngFor="let pro of orders">
+                  <td>{{ pro.id }}</td>
+                  <td>{{ pro.created_at | date : "medium" }}</td>
+                  <td [ngClass]="
+                      pro.product_name == 'Gold'
+                        ? 'myGoldColor'
+                        : 'mySilverColor'
+                    ">
+                    {{ pro.product_name }}
+                  </td>
+                  <td>{{ pro.qty_purchased }}</td>
+                  <td>
+                    <ng-container *ngIf="pro.product_name === 'Gold'; else otherProduct">
+                      <ng-container *ngIf="!pro.trade; else tradeGold">
+                        {{ pro.purchased_price | currency : "₹" }}/gm
+                      </ng-container>
+                      <ng-template #tradeGold>
+                        {{ pro.book_rate | currency : "₹" }}/gm
+                      </ng-template>
+                    </ng-container>
+                    <ng-template #otherProduct>
+                      <ng-container *ngIf="!pro.trade; else tradeOther">
+                        {{ pro.purchased_price | currency : "₹" }}/Kg
+                      </ng-container>
+                      <ng-template #tradeOther>
+                        {{ pro.book_rate | currency : "₹" }}/Kg
+                      </ng-template>
+                    </ng-template>
+                  </td>
+                  <td>{{ pro.total_price | currency : "₹" }}</td>
+                  <td *ngIf="!isTrade">{{ pro.penalty | numberFormat }}</td>
+
+                  <td *ngIf="!isTrade">
+                    <ng-container [ngSwitch]="pro.payment_status">
+                      <!-- <p *ngIf="pro.order_state === 0 &&  pro.payment_status === 0" class="ppending" (click)="onGetId(pro.id)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalGold">Update Payment Document</p> -->
+                      <p *ngIf="
+                          pro.order_state === 0 && pro.payment_status === 0
+                        " class="prejected">
+                        <button class="ppending" (click)="onGetId(pro.id)" data-bs-toggle="modal"
+                          data-bs-target="#exampleModalGold">
+                          Update Payment Document
+                        </button>
+                      </p>
+                      <p *ngIf="
+                          pro.order_state === 2 && pro.payment_status === 0
+                        " class="prejected">
+                        N/A
+                      </p>
+                      <p *ngSwitchCase="1" class="ppconform">
+                        Document Submitted
+                      </p>
+                      <p *ngSwitchCase="2" class="ppconform">
+                        Payment Confirmed
+                      </p>
+                      <p *ngSwitchCase="3" class="prejected">
+                        Payment Declined
+                        <button class="ppending" (click)="onGetId(pro.id)" data-bs-toggle="modal"
+                          data-bs-target="#exampleModalGold">
+                          Reupload Payment Document
+                        </button>
+                      </p>
+                    </ng-container>
+                  </td>
+                  <td>
+                    <ng-container [ngSwitch]="pro.order_status">
+                      <p *ngIf="pro.order_state === 2" class="prejected">
+                        Order Rejected
+                      </p>
+                      <p *ngIf="
+                          (pro.order_status === 0 && pro.order_state === 0) ||
+                          (pro.order_state === 1 && pro.payment_status === 1)
+                        " class="created">
+                        Order Created
+                      </p>
+                      <p *ngSwitchCase="1" class="ppconform">Order Accepted</p>
+                      <p *ngSwitchCase="2" class="ppInprocess">
+                        Order Inprocess
+                      </p>
+                      <p *ngIf="pro.order_status === 3 && pro.qty_purchased < 500" class="ppending"
+                        data-bs-toggle="modal" data-bs-target="#conformDelivery" (click)="getOrderId(pro.id, pro)">
+                        Update Delivery Details
+                      </p>
+                      <p *ngIf="pro.order_status === 3 && pro.qty_purchased >= 500" class="ppending"
+                        data-bs-toggle="modal" data-bs-target="#conformDeliveryAbove500"
+                        (click)="getOrderIdAbove500(pro.id, pro)">
+                        Update Delivery Details
+                      </p>
+                      <p *ngSwitchCase="4" class="ppconform">
+                        Order Delivered
+                      </p>
+                      <p *ngSwitchCase="5" class="ppconform">Picker Selected</p>
+                    </ng-container>
+                  </td>
+                  <!-- <ng-container *ngIf="!isTrade">
+
+                  </ng-container> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+        <div class="table-responsive" *ngIf="!noData">
+          <div class="table-container">
+            <table class="table1">
+              <tbody class="customtable1" *ngFor="let pro of orders">
+                <tr>
+                  <td>Order Id</td>
+                  <td>:</td>
+                  <td>{{ pro.id }}</td>
+                </tr>
+                <tr>
+                  <td>Date & Time</td>
+                  <td>:</td>
+                  <td>{{ pro.created_at | date : "medium" }}</td>
+                </tr>
+                <tr>
+                  <td>Product</td>
+                  <td>:</td>
+
+                  <td [ngClass]="
+                      pro.product_name == 'Gold'
+                        ? 'myGoldColor'
+                        : 'mySilverColor'
+                    ">
+                    {{ pro.product_name }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Quantity (Grams)</td>
+                  <td>:</td>
+                  <td>{{ pro.qty_purchased }}</td>
+                </tr>
+                <tr>
+                  <td>Price</td>
+                  <td>:</td>
+                  <td>
+                    <ng-container *ngIf="pro.product_name === 'Gold'; else otherProduct">
+                      <ng-container *ngIf="!pro.trade; else tradeGold">
+                        {{ pro.purchased_price | currency : "₹" }}/gm
+                      </ng-container>
+                      <ng-template #tradeGold>
+                        {{ pro.book_rate | currency : "₹" }}/gm
+                      </ng-template>
+                    </ng-container>
+                    <ng-template #otherProduct>
+                      <ng-container *ngIf="!pro.trade; else tradeOther">
+                        {{ pro.purchased_price | currency : "₹" }}/Kg
+                      </ng-container>
+                      <ng-template #tradeOther>
+                        {{ pro.book_rate | currency : "₹" }}/Kg
+                      </ng-template>
+                    </ng-template>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>Total Price</td>
+                  <td>:</td>
+                  <td>{{ pro.total_price | currency : "₹" }}</td>
+                </tr>
+                <tr>
+                  <td *ngIf="!isTrade">Penalty</td>
+                  <td *ngIf="!isTrade">:</td>
+                  <td *ngIf="!isTrade">{{ pro.penalty | currency : "₹" }}</td>
+                </tr>
+                <tr>
+                  <td *ngIf="!isTrade">Payment Status</td>
+                  <td *ngIf="!isTrade">:</td>
+                  <td *ngIf="!isTrade">
+                    <ng-container [ngSwitch]="pro.payment_status">
+                      <p *ngSwitchCase="0" class="ppending">Payment Pending</p>
+                      <p *ngSwitchCase="1" class="pconform">
+                        Document Submitted
+                      </p>
+                      <p *ngSwitchCase="2" class="pconform">
+                        Payment Confirmed
+                      </p>
+                      <p *ngSwitchCase="3" class="prejected">
+                        Payment Rejected
+                      </p>
+                    </ng-container>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td *ngIf="!isTrade">Order Status</td>
+                  <td *ngIf="!isTrade">:</td>
+                  <td *ngIf="!isTrade">
+                    <ng-container [ngSwitch]="pro.order_status">
+                      <p *ngSwitchCase="0" class="ppending">Order Created</p>
+                      <p *ngSwitchCase="1" class="pconform">Order Accepted</p>
+                      <p *ngSwitchCase="2" class="prejected">Order Rejected</p>
+                      <p *ngIf="pro.order_status === 3 && pro.qty_purchased < 500" class="psubmited"
+                        data-bs-toggle="modal" data-bs-target="#conformDelivery" (click)="getOrderId(pro.id, pro)">
+                        Update Delivery Details
+                      </p>
+                      <p *ngIf="pro.order_status === 3 && pro.qty_purchased >= 500" class="ppending"
+                        data-bs-toggle="modal" data-bs-target="#conformDeliveryAbove500"
+                        (click)="getOrderIdAbove500(pro.id, pro)">
+                        Update Delivery Details
+                      </p>
+                      <p *ngSwitchCase="4" class="pconform">Order Delivered</p>
+                      <p *ngSwitchCase="5" class="pconform">Picker Selected</p>
+                    </ng-container>
+                  </td>
+                </tr>
+                <tr>
+                  <td *ngIf="!isTrade">Action</td>
+                  <td *ngIf="!isTrade">:</td>
+                  <ng-container *ngIf="!isTrade">
+                    <td *ngIf="pro.payment_status != 0">
+                      <button class="btn" disabled>Payment Updated</button>
+                    </td>
+                    <td *ngIf="pro.payment_status == 0">
+                      <button class="btn" (click)="onGetId(pro.id)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalGold">
+                        Update Payment
+                      </button>
+                    </td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModalGold" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h4 class="modal-title myheading-models" id="exampleModalLabel">
+          Upload transaction details
+        </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="resetOtherForm()"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" [formGroup]="UpdateDocForm" (ngSubmit)="onSubmit()">
+          <div class="pop-up-gold"></div>
+          <div *ngIf="rejectionReason">
+            <h3 class="text-danger">
+              <b>Rejection Reason : {{ rejectionReason }}</b>
+            </h3>
+            <img class="rejectReceipt" [src]="rejectionReceipt" alt="Rejection Receipt" style="width:510px"><br>
+            <label for="" class="myheading-models">Upload Receipt</label>
+          </div>
+          <input class="formselect-gold" (change)="onFileSelectedReceipt($event)" type="file"
+            formControlName="transaction_image" accept="image/png, image/jpeg"/>
+          <!-- (change)="calcAmountForTotal($event)" -->
+
+          <div class="validationError" *ngIf="
+              UpdateDocForm.get('transaction_image')?.hasError('required') &&
+              UpdateDocForm.get('transaction_image')?.touched
+            ">
+            Receipt is required.
+          </div>
+
+          <!-- <p *ngIf="isTotal">Current Live Rate Total
+             Amount : <b class="bts">{{fAmount}}</b></p> -->
+          <div>
+            <label for="" class="myheading-models mt-2">Transaction id</label>
+          </div>
+          <input type="text" formControlName="transation_id" name="" id="" class="formselect-gold"
+            placeholder="Enter transaction id" />
+          <div class="validationError" *ngIf="
+              UpdateDocForm.get('transation_id')?.hasError('required') &&
+              UpdateDocForm.get('transation_id')?.touched
+            ">
+            Transation id is required.
+          </div>
+          <div class="validationError" *ngIf="
+              UpdateDocForm.get('transation_id')?.hasError('pattern') &&
+              UpdateDocForm.get('transation_id')?.touched
+            ">
+            Enter a valid transaction id.
+          </div>
+
+          <!-- <div class="validationError" *ngIf="
+               UpdateDocForm.get('transation_id')?.hasError('pattern') &&
+               UpdateDocForm.get('transation_id')?.touched
+             ">
+             Please enter a valid amount.
+           </div> -->
+           <div class="row">
+            <div class="col-md-12 bankDetails">
+              <h3>Note : Pay to the following bank.</h3>
+            </div>
+           </div>
+
+          <div class="row bnkDetails myheading-models">
+            <div class="col-md-6">
+              <h3>ICIC Bank</h3>
+              <p><b>A/C No : </b> 111805001522</p>
+              <p><b>IFSC CODE : </b> ICIC01118</p>
+              <p><b>Branch : </b> East Marredpally</p>
+            </div>
+            <div class="col-md-6">
+              <h3>SBI Bank</h3>
+              <p><b>A/C No : </b> 39523271424</p>
+              <p><b>IFSC CODE : </b> SBIN0020299</p>
+              <p><b>Branch : </b> East Marredpally</p>
+            </div>
+          </div>
+
+          <button class="buy-gold-popup" *ngIf="UpdateDocForm.invalid" [disabled]="UpdateDocForm.invalid || isUploadDisabled">
+            Upload
+          </button>
+          <button class="buy-gold-popup-valid" data-bs-dismiss="modal"[disabled]="isUploadDisabled" *ngIf="UpdateDocForm.valid" type="submit">
+            Upload
+          </button>
+
+          <!-- <button class="buy-gold-popup" *ngIf="UpdateDocForm.invalid" [disabled]="UpdateDocForm.invalid && isUploadDisabled">
+            Upload
+          </button>
+          <button class="buy-gold-popup-valid" data-bs-dismiss="modal" [disabled]="isUploadDisabled" *ngIf="UpdateDocForm.valid" type="submit">
+            Upload
+          </button> -->
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+         <button
+           type="button"
+           class="btn btn-secondary"
+           data-bs-dismiss="modal"
+         >
+           Close
+         </button>
+         <button type="button" class="btn btn-primary">
+           Save changes
+         </button>
+       </div> -->
+    </div>
+  </div>
+</div>
+
+<!-- otpConform -->
+<div class="modal fade" id="conformDelivery" tabindex="-1" aria-labelledby="exampleModalLabelConform"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h3 class="modal-title myheading-models" id="exampleModalLabel">
+         Update Delivery Details 
+        </h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="resetOtherForm()"></button>
+      </div>
+      <div class="modal-body">
+        <section class="mainclass">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="loginmaindiv">
+                <div class="admin_login_title">
+                  <p class="verification-code">
+                    Message: {{ deliveryDetails?.message }}
+                  </p>
+                  <p class="verification-code">
+                    Date & Time : {{ deliveryDetails?.time | date : "medium" }}
+                  </p>
+                  <br />
+                </div>
+                <label for="">Order Picked Up By:</label>
+                <select name="" id="" class="input-filed" (change)="orderpicker($event)">
+                  <option value="self">Self</option>
+                  <option value="other">Other</option>
+                </select>
+                <button class="login-btn" *ngIf="isSelf" (click)="selfConform()">
+                  Submit
+                </button>
+
+                <form [formGroup]="otherform" *ngIf="!isSelf" (ngSubmit)="onOtherFormSubmit()">
+                  <div class="login-input-div">
+                    <label for="">Name of person</label>
+                    <input placeholder=" Enter Your Name" type="text" class="input-filed"
+                      formControlName="other_person_name" />
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_name')
+                        ?.hasError('required') &&
+                      otherform.get('other_person_name')?.touched
+                    ">
+                    Name is required.
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform.get('other_person_name')?.hasError('pattern') &&
+                      otherform.get('other_person_name')?.touched
+                    ">
+                    Please enter a valid name.
+                  </div>
+                  <label for="">Mobile Number</label>
+                  <input placeholder=" Enter Your Number" type="text" class="input-filed" maxlength="10" minlength="10"
+                    formControlName="other_person_number" />
+                  <span class="number-icon">
+                    <p>+91 |</p>
+                  </span>
+
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_number')
+                        ?.hasError('required') &&
+                      otherform.get('other_person_number')?.touched
+                    ">
+                    Mobile number is required.
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_number')
+                        ?.hasError('pattern') &&
+                      otherform.get('other_person_number')?.touched
+                    ">
+                    Please enter a valid mobile number.
+                  </div>
+                  <div class="login-input-div">
+                    <label for="">Id Number</label>
+                    <input placeholder="Ex:Aadhar/Pan/License" type="text" class="input-filed"
+                      formControlName="other_person_id_card_number" />
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_id_card_number')
+                        ?.hasError('required') &&
+                      otherform.get('other_person_id_card_number')?.touched
+                    ">
+                    Name is required.
+                  </div>
+                  <label for="">Upload Id Card</label>
+                  <input class="input-filed" (change)="otherPersonFile($event)" type="file"
+                    formControlName="other_person_doc" accept=".png, .jpg, .jpeg" />
+                  <!--  -->
+                  <!-- (change)="calcAmountForTotal($event)" -->
+                  <div class="validationError" *ngIf="
+                      otherform.get('other_person_doc')?.hasError('required') &&
+                      otherform.get('other_person_doc')?.touched
+                    ">
+                    Receipt is required.
+                  </div>
+                  <div class="loginbotn-div">
+                    <button class="login-btn" *ngIf="otherform.valid" type="submit">
+                      Submit
+                    </button>
+                    <button class="login-btn-invalid" *ngIf="!otherform.valid" type="submit"
+                      [disabled]="!otherform.valid">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+                <div class="detailsAbove500" *ngIf="">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="conformDeliveryAbove500" tabindex="-1" aria-labelledby="exampleModalLabelConform"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content checkColor">
+      <div class="modal-header">
+        <h3 class="modal-title myheading-models" id="exampleModalLabel">
+          Order Pickup
+        </h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="resetOtherForm()"></button>
+      </div>
+      <div class="modal-body" *ngIf="deliveryDetailsAbove500?.type === 'self'">
+        <section class="mainclass">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="loginmaindiv">
+                <div class="admin_login_title">
+                  <p class="verification-code">
+                    Message: {{ deliveryDetailsAbove500?.message }}
+                  </p>
+                  <p class="verification-code">
+                    Date & Time : {{ deliveryDetailsAbove500?.time | date : "medium" }}
+                  </p>
+                  <br />
+                </div>
+                <label for="">Order Picked Up By:</label>
+                <select name="" id="" class="input-filed" (change)="orderpicker($event)">
+                  <option value="self">Self</option>
+                  <option value="other">Other</option>
+                </select>
+                <button class="login-btn" *ngIf="isSelf" (click)="selfConform()">
+                  Submit
+                </button>
+
+                <form [formGroup]="otherform" *ngIf="!isSelf" (ngSubmit)="onOtherFormSubmit()">
+                  <div class="login-input-div">
+                    <label for="">Name of person</label>
+                    <input placeholder=" Enter Your Name" type="text" class="input-filed"
+                      formControlName="other_person_name" />
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_name')
+                        ?.hasError('required') &&
+                      otherform.get('other_person_name')?.touched
+                    ">
+                    Name is required.
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform.get('other_person_name')?.hasError('pattern') &&
+                      otherform.get('other_person_name')?.touched
+                    ">
+                    Please enter a valid name.
+                  </div>
+                  <label for="">Mobile Number</label>
+                  <input placeholder=" Enter Your Number" type="text" class="input-filed" maxlength="10" minlength="10"
+                    formControlName="other_person_number" />
+                  <span class="number-icon">
+                    <p>+91 |</p>
+                  </span>
+
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_number')
+                        ?.hasError('required') &&
+                      otherform.get('other_person_number')?.touched
+                    ">
+                    Mobile number is required.
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_number')
+                        ?.hasError('pattern') &&
+                      otherform.get('other_person_number')?.touched
+                    ">
+                    Please enter a valid mobile number.
+                  </div>
+                  <div class="login-input-div">
+                    <label for="">Id Number</label>
+                    <input placeholder="Ex:Aadhar/Pan/License" type="text" class="input-filed"
+                      formControlName="other_person_id_card_number" />
+                  </div>
+                  <div class="validationError" *ngIf="
+                      otherform
+                        .get('other_person_id_card_number')
+                        ?.hasError('required') &&
+                      otherform.get('other_person_id_card_number')?.touched
+                    ">
+                    Name is required.
+                  </div>
+                  <label for="">Upload Id Card</label>
+                  <input class="input-filed" (change)="otherPersonFile($event)" type="file"
+                    formControlName="other_person_doc" accept=".png, .jpg, .jpeg" />
+                  <!--  -->
+                  <!-- (change)="calcAmountForTotal($event)" -->
+                  <div class="validationError" *ngIf="
+                      otherform.get('other_person_doc')?.hasError('required') &&
+                      otherform.get('other_person_doc')?.touched
+                    ">
+                    Receipt is required.
+                  </div>
+                  <div class="loginbotn-div">
+                    <button class="login-btn" *ngIf="otherform.valid" type="submit">
+                      Submit
+                    </button>
+                    <button class="login-btn-invalid" *ngIf="!otherform.valid" type="submit"
+                      [disabled]="!otherform.valid">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+                <div class="detailsAbove500" *ngIf="">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ///////  for Delivery ////////// -->
+
+      <div class="modal-body" *ngIf="deliveryDetailsAbove500?.type === 'delivery_boy'">
+        <section class="mainclass">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="loginmaindiv">
+                <div class="admin_login_title">
+                  <p class="verification-code">
+                    Message: {{ deliveryDetailsAbove500?.message }}
+                  </p>
+                  <p class="verification-code">
+                    Date & Time : {{ deliveryDetailsAbove500?.time | date : "medium" }}
+                  </p>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <p><b>Type</b></p>
+                <p><b>Delivery Boy Name</b></p>
+                <p><b>Delivery Boy Mobile number</b></p>
+                <p><b>Delivery Boy IC proof</b></p>
+                <!-- delivery_boy_name:4545454545
+                   delivery_boy_phonenumber:99888333
+                    image: imagefile -->
+              </div>
+              <div class="col-md-1">
+                <p><b> : </b></p>
+                <p><b> : </b></p>
+                <p><b> : </b></p>
+                <p><b> : </b></p>
+              </div>
+              <div class="col-md-6">
+                <p>Delivery Boy</p>
+                <p>{{deliveryDetailsAbove500?.delivery_boy_name}}</p>
+                <p>{{deliveryDetailsAbove500?.delivery_boy_phonenumber}}</p>
+                
+              </div>
+            </div>
+            <div style="text-align: center;margin-bottom:20px">
+              <img [src]="deliveryDetailsAbove500?.image" alt="No Image" style="width:30%"
+              (click)="toggleZoom()" class="zoomable-image" [class.zoomed]="isZoomed" >
+            </div>
+            <div class="loginbotn-div">
+              <button class="login-btn" type="submit" (click)="submitDeliveryBoy()">
+                  Confirm Delivery
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!--  ////////////  for Courier ///////// -->
+
+      <div class="modal-body" *ngIf="deliveryDetailsAbove500?.type === 'courier'">
+        <section class="mainclass">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="loginmaindiv">
+                <div class="admin_login_title">
+                  <p class="verification-code">
+                    Message: {{ deliveryDetailsAbove500?.message }}
+                  </p>
+                  <p class="verification-code">
+                    Date & Time : {{ deliveryDetailsAbove500?.time | date : "medium" }}
+                  </p>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <p><b>Type</b></p>
+                <p><b>Air Bill Number</b></p>
+                <p><b>Bill Receipt</b></p>
+                <!-- delivery_boy_name:4545454545
+                   delivery_boy_phonenumber:99888333
+                    image: imagefile -->
+              </div>
+              <div class="col-md-1">
+                <p><b> : </b></p>
+                <p><b> : </b></p>
+                <p><b> : </b></p>
+              </div>
+              <div class="col-md-6">
+                <p>Courier</p>
+                <p>{{deliveryDetailsAbove500?.tracking_number}}</p>
+               
+              </div>
+            </div>
+            <div style="text-align: center;margin-bottom:20px">
+              <img [src]="deliveryDetailsAbove500?.image" alt="No Image" style="width:30%"
+              (click)="toggleZoom()" class="zoomable-image" [class.zoomed]="isZoomed" >
+            </div>
+            <div class="loginbotn-div">
+              <button class="login-btn" type="submit" (click)="submitcourier()">
+                Confirm Delivery
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- <form [formGroup]="loginForm" (ngSubmit)="onOTPConform()">
+
+  <div class="admin_login_title">
+    <p class="verification-code">Message: {{deliveryDetails?.message}}</p>
+    <p class="verification-code">Date & Time : {{deliveryDetails?.time}}</p><br>
+    <h6 class="verification-code">Please conform your product delivery by sending otp to you register
+      mobile number.</h6>
+  </div>
+  <div class="login-input-div">
+    <input placeholder=" Enter Your Number" type="text" class="input-filed" maxlength="10"
+      minlength="10" formControlName="phone" />
+    <span class="number-icon">
+      <p>+91 |</p>
+    </span>
+  </div>
+  <div class="validationError" *ngIf="
+    loginForm.get('phone')?.hasError('required') &&
+    loginForm.get('phone')?.touched
+  ">
+    Mobile number is required.
+  </div>
+  <div class="validationError" *ngIf="
+    loginForm.get('phone')?.hasError('pattern') &&
+    loginForm.get('phone')?.touched
+  ">
+    Please enter a valid mobile number.
+  </div>
+  <div class="loginbotn-div">
+    <button class="login-btn" *ngIf="loginForm.valid" type="submit">Send OTP</button>
+    <button class="login-btn-invalid" *ngIf="!loginForm.valid" type="submit"
+      [disabled]="!loginForm.valid">Send OTP</button>
+
+  </div>
+
+</form> -->

@@ -1,0 +1,31 @@
+
+
+
+<section class="first-sec">
+    <h2 class="head"  [style.color]="goldSilverMargin.headColor">Margin</h2>
+    <div>
+        <label for="" [style.color]="goldSilverMargin.labels" class="labels">Select Type</label>
+        <select  [style.background]="goldSilverMargin.mySelectGoldBackground" [style.color]="goldSilverMargin.mySelectGoldColor"  class="my-select-gold" (change)="goldSelect($event)">
+            <option value="" disabled>Select</option>
+            <option value="Gold">Gold Margin</option>
+            <option value="Silver">Silver Margin</option>
+        </select>
+        <div *ngIf="isGold">
+            <p class="my-select" [style.color]="goldSilverMargin.mySelectGoldColor">Total Margin : {{margin.total}} </p>
+        <p class="my-select" [style.color]="goldSilverMargin.mySelectGoldColor">Used Margin : {{margin.distributed}}</p>
+        <p class="my-select" [style.color]="goldSilverMargin.mySelectGoldColor">Available Margin : {{margin.available}} </p>
+        <p class="my-select" [style.color]="goldSilverMargin.mySelectGoldColor">Fixed Margin : {{margin.fixed}} </p>
+        <p class="my-select" [style.color]="goldSilverMargin.mySelectGoldColor">Credit  Margin : {{margin.credit}} </p>
+        <p class="my-select" [style.color]="goldSilverMargin.mySelectGoldColor">Free Margin : {{margin.free}} </p>
+        </div>
+        <div *ngIf="!isGold">
+            <p class="my-select">Total Margin : {{margin.silver_total}} </p>
+            <p class="my-select">Used Margin : {{margin.silver_distributed}}</p>
+            <p class="my-select">Available Margin : {{margin.silver_available}} </p>
+            <p class="my-select">Fixed Margin : {{margin.silver_fixed}} </p>
+            <p class="my-select">Credit  Margin : {{margin.silver_credit}} </p>
+            <p class="my-select">Free Margin : {{margin.silver_free}} </p>
+        </div>
+
+    </div>
+</section>

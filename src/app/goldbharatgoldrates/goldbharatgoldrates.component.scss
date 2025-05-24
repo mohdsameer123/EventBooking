@@ -1,0 +1,92 @@
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+.wrapper-sections {
+  background-color: #1a2e22;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.wrappers-div {
+  display: flex;
+  align-items: center;
+}
+
+.my-gold-headings {
+  color: yellow;
+  font-size: 48px;
+  font-weight: 700;
+  //   margin: 0;
+  //   text-align: center;
+}
+.my-gold-headings-one {
+  color: silver;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.span-div {
+  color: white;
+  font-size: 48px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+.rupees-symbol {
+  color: white;
+  font-size: 45px;
+  vertical-align: middle;
+  margin-top: 0;
+}
+
+.counter-value {
+  font-size: 210px;
+  font-weight: 400;
+  margin-left: 16px;
+}
+.counter-value-two {
+  font-size: 70px;
+  margin-left: 16px;
+}
+
+.red-pulse {
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 500px) {
+  .counter-value {
+    font-size: 20px;
+  }
+  .my-gold-headings {
+    font-size: 20px;
+  }
+  .span-div {
+    font-size: 20px;
+  }
+  .rupees-symbol {
+    font-size: 20px;
+    margin-top: 14px;
+  }
+  .red-pulse {
+    width: 20px;
+    height: 20px;
+  }
+  .my-gold-headings-one {
+    font-size: 20px;
+  }
+  .counter-value-two {
+    font-size: 20px;
+  }
+}

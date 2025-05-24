@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200&family=Lora:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&family=Roboto:wght@300&display=swap");
+
+span,
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.layout_padding {
+  margin-top: 6rem;
+  color: #ffffff;
+}
+
+p {
+  text-align: justify;
+  font-family: "Roboto";
+}
+
+.blog_head {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: "Roboto";
+  font-weight: 600;
+  color: #e1b737;
+}
+
+@media (max-width: 500px) {
+  .layout_padding {
+    margin-top: 6rem;
+  }
+}

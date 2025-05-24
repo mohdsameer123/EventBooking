@@ -1,0 +1,370 @@
+<!-- footer-section -->
+
+<section class="footer-sections">
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-md-3 column-one">
+        <p class="footer-main-heading">Quick Links</p>
+        <div class="line-bordered"></div>
+        <p><a href="#" class="footer-sub-heading">Live Rates</a></p>
+        <p><a href="#" class="footer-sub-heading">About Us</a></p>
+        <p><a href="#" class="footer-sub-heading">Products</a></p>
+        <p><a href="#" class="footer-sub-heading">Locate Us</a></p>
+      </div>
+
+      <div class="col-md-3 column-two">
+        <p class="footer-main-heading">Our Products</p>
+        <div class="line-bordered"></div>
+        <p><a href="#" class="footer-sub-heading">Gold Bars</a></p>
+        <p><a href="#" class="footer-sub-heading">Silver Bars</a></p>
+        <p><a href="#" class="footer-sub-heading">Gold Coins</a></p>
+        <p><a href="#" class="footer-sub-heading">Silver Coins</a></p>
+      </div>
+
+      <div class="col-md-3 column-three">
+        <p class="footer-main-heading">Get In Touch</p>
+        <div class="line-bordered"></div>
+        <p class="footer-sub-heading"><a href="#">Call: 1800 8906 122</a></p>
+        <p class="footer-sub-heading"><a href="#">Call: 040 23222175</a></p>
+        <p class="footer-sub-heading">
+          What’s App:<a href="#"> +91-9160006702</a>
+        </p>
+        <p class="footer-sub-heading">
+          Email: <a href="#">info@tavishibullion.com</a>
+        </p>
+        <p class="footer-sub-heading">
+          Working Hours: Mon-Sat(9:30 am to 6:30 pm)
+        </p>
+        <p class="footer-sub-heading">Note: 2nd & 4th Saturdays Holidays.</p>
+      </div>
+
+      <div class="col-md-3 column-four">
+        <p class="footer-main-heading">Download Our App</p>
+        <div class="line-bordered"></div>
+        <div class="icons-main">
+          <div>
+            <img src="../../assets/googlplay.png" alt="" />
+          </div>
+          <div class="mt-2">
+            <img src="../../assets/GooglepalyStore.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Design-xyugtechnologies text-center">
+      <p class="down-footer">
+        2022-2023 Goldsikka Ltd.Design by: X-YUG Technologies
+      </p>
+    </div>
+  </div> -->
+
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="footer-cardss">
+          <h6 class="addrees-para">Registered / Corporate Office :</h6>
+          <p>
+            Tavishi Bullion 2nd Floor, H.No.1-10-60 to 62, Ashoka Raghupathi
+            Chambers , S.P. Road, Begumpet Hyderabad, Telangana-500016, India.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="footer-cardss">
+          <h6 class="addrees-para">Matrika Flagship Store :</h6>
+          <p>
+            Shop No. 8-1-21/47 Surya Nagar Colony , Tolichowki 7 Tombs Road
+            Beside Toyota service center, Hyderabad, Telangana-500008, India.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="footer-cardss">
+          <h6 class="addrees-para">Jewelery Wholesale Shoppe :</h6>
+          <p>
+            Tavishi Bullion 1st Floor, #3-5-171/1/2, Narayanguda Near Melkote
+            park, Hyderabad, Telangana-500029, India.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="footer-cardss">
+          <h6 class="addrees-para">Bullion Retail Shoppe :</h6>
+          <p>
+            Shop No. 01 H No 21-6-60, Mehndi Galli, Ghansi Bazar, Charminar,
+            Hyderabad Telangana-500002, India.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h6 class="distributor-GoldSikka">Goldsikka Distributors :</h6>
+      <div class="col-md-6">
+        <div class="footer-cardss">
+          <h6 class="addrees-para">RK Jewellers, Karimnagar (Telangana):</h6>
+          <p>
+            House No: 2-10-1148 Jyothi Nagar, Karimnagar Telangana 505001,
+            India. Contact: +91-9395101978 / 9390606060
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="footer-cardss">
+          <h6 class="addrees-para">
+            Vaishnavi Jewellers, Peddapalli (Telangana):
+          </h6>
+          <p>
+            House No: 2-1-189 Pragati Nagar, Peddapalli Telangana 505172, India.
+            Contact: +91-9246930366
+          </p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 column-one">
+        <div class="row">
+          <div class="col-md-4 footer-sec-ones">
+            <p class="footer-main-heading">Quick Links</p>
+            <div class="line-bordered"></div>
+            <!-- <p><a href="/home" class="footer-sub-heading">Live Rates</a></p>
+            <p><a href="aboutus" class="footer-sub-heading">About Us</a></p>
+            <p><a href="/products" class="footer-sub-heading">Products</a></p>
+            <p><a href="/locateus" class="footer-sub-heading">Locate Us</a></p>
+            <p><a href="/policy" class="footer-sub-heading">Privacy Policy</a></p> -->
+
+            <p *ngFor="let link of quickLinks"> <a [routerLink]="link.url" class="footer-sub-heading">{{ link.label
+                }}</a> </p>
+
+
+          </div>
+          <div class="col-md-8 footer-sec-twos">
+            <p class="footer-main-heading">Get In Touch</p>
+            <div class="line-bordered"></div>
+            <p>
+              <a href="tel:18008906122" class="footer-sub-heading" target="_blank">Tollfree No: {{ contact.tollFree
+                }}</a>
+            </p>
+            <p>
+              <a href="tel:04023222175" class="footer-sub-heading" target="_blank">Phone: {{ contact.phone }}</a>
+            </p>
+            <a href="https://wa.me//9160006702" class="footer-sub-heading" target="_blank">
+              <p class="my-para">
+                What's App: +91 {{ contact.whatsapp }}
+              </p>
+            </a>
+            <a href="https://mail.google.com/mail/u/0/?fs=1&amp;tf=cm&amp;to=info@tavishibullion.com" target="_blank"
+              class="footer-sub-heading">
+              <p class="my-para">
+                Email:
+                {{ contact.email }}
+              </p>
+            </a>
+            <p class="my-para">Working Hours: {{ contact.workingHours }}</p>
+            <p class="my-para">Note: {{ contact.note }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8 column-two">
+        <div class="row">
+          <div class="col-md-4 footer-sec-threes">
+            <p class="footer-main-heading">Company Details</p>
+            <div class="line-bordered"></div>
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> IEC No :
+              {{ companyDetails.iec }}
+            </p>
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> ISIN No :
+              {{ companyDetails.isin }}
+            </p>
+            <!-- <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> NSDL No :
+            </p> -->
+
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> PAN No :
+              {{ companyDetails.pan }}
+            </p>
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> TAN No :
+              {{ companyDetails.tan }}
+            </p>
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> GSTIN No :
+              {{ companyDetails.gstin }}
+            </p>
+
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> UAN No : {{ companyDetails.udyogAadhar }}
+            </p>
+
+          </div>
+
+          <div class="col-md-8 mylastpara footer-sec-four">
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> CIN No :
+              {{ companyDetails.cin }}
+            </p>
+
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> MMTC Limited
+              Gold Code : {{ companyDetails.mmtcGoldCode }} Silver Code : {{ companyDetails.mmtcSilverCode }}
+            </p>
+
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> GJEPC
+              Membership No : {{ companyDetails.gjepcMembership }}
+            </p>
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> Bureau of
+              Indian Standards Certificate No : {{ companyDetails.bisCertificate }}
+            </p>
+
+
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              Govt of Telangana Reg No : {{ companyDetails.telanganaRegNo }}
+            </p>
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i> Legal Entity
+              Identifier No : {{ companyDetails.legalEntityIdentifier }}
+            </p>
+
+            <p class="my-para">
+              <i class="fa fa-caret-right" aria-hidden="true"></i>
+              Central Registry of Securitisation Asset Reconstruction and Security Interest of India - KYC Identifier No
+              : {{ companyDetails.kycIdentifier }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- <div class="col-md-2 column-three">
+        <p class="footer-main-heading">Download Our App</p>
+        <div class="line-bordered"></div>
+        <div class="icons-main">
+          <div>
+            <a class="hoverEffect" target="_blank" [href]="downloadLinks.android">
+              <img src="../../assets/googlplay.png" alt="" />
+            </a>
+          </div>
+          <div class="mt-2">
+            <a class="hoverEffect" target="_blank" [href]="downloadLinks.ios">
+              <img src="../../assets/GooglepalyStore.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="Design-xyugtechnologies text-center">
+        <p class="down-footer">
+          2023-2024 Goldsikka Ltd.Design by: X-YUG Technologies
+        </p>
+      </div> -->
+      <div *ngIf="showAddresses">
+
+        <div class="col-md-12">
+          <div class="footer-cardss mt-4">
+            <p><span class="addrees-para">Registered / Corporate Office : </span>
+              Tavishi Bullion 2nd Floor, #1-10-60 to 62, Ashoka Raghupathi
+              Chambers, Begumpet Hyderabad, Telangana-500016, India.
+            </p>
+          </div>
+        </div>
+        <hr>
+        <div class="col-md-12">
+          <div class="footer-cardss">
+            <p><span class="addrees-para">Jewelery Wholesale Shoppe : </span>
+              Tavishi Bullion 1st Floor, #3-5-171/1/2, Narayanguda Near Melkote
+              park, Hyderabad, Telangana-500029, India.
+            </p>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-6">
+            <div class="footer-cardss">
+              <h6 class="addrees-para">Matrika Flagship Store :</h6>
+              <p>
+                Shop No. 8-1-21/47 Surya Nagar Colony , Tolichowki 7 Tombs Road
+                Beside Toyota service center, Hyderabad, Telangana-500008, India.
+              </p>
+            </div>
+          </div> -->
+
+        <div class="row">
+
+
+          <!-- <div class="col-md-6">
+            <div class="footer-cardss">
+              <h6 class="addrees-para">Bullion Retail Shoppe :</h6>
+              <p>
+                Shop No. 01 H No 21-6-60, Mehndi Galli, Ghansi Bazar, Charminar,
+                Hyderabad Telangana-500002, India.
+              </p>
+            </div>
+          </div> -->
+        </div>
+
+        <!-- <div class="row">
+          <h6 class="distributor-GoldSikka mt-4">Goldsikka Distributors :</h6>
+          <div class="col-md-6">
+            <div class="footer-cardss">
+              <h6 class="addrees-para">RK Jewellers, Karimnagar (Telangana):</h6>
+              <p>
+                House No: 2-10-1148 Jyothi Nagar, Karimnagar Telangana 505001,
+                India. Contact: +91 9395101978 / 9390606060
+              </p>
+            </div>
+          </div>
+    
+          <div class="col-md-6">
+            <div class="footer-cardss">
+              <h6 class="addrees-para">
+                Vaishnavi Jewellers, Peddapalli (Telangana):
+              </h6>
+              <p>
+                House No: 2-1-189 Pragati Nagar, Peddapalli Telangana 505172, India.
+                Contact: +91 9246930366
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<section class="copy-right-div">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 rightdiv-one">
+        <p class="twnetygoldfourgoldsikka">
+          © 2023-{{ currentYear }} {{companyDetails.companyname}}.Design by: <a href="https://xyug.in/" class="xyug"
+            target="_blank"> X-YUG Technologies</a>
+        </p>
+      </div>
+
+      <div class="col-md-6 rightdiv-two" style="text-align: end">
+        <div class="faceicons">
+          <a *ngFor="let social of socialLinks" [href]="social.url">
+            <i [class]="social.icon"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

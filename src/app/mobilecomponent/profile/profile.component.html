@@ -1,0 +1,112 @@
+<!-- <div class="profile-main">
+    <div class="child">
+        <div class="round">
+            <h3 class="user-name">{{userLog?.proprietor_name | slice: 0 : 1 }}</h3>
+        </div>
+        <p class="name">{{userLog?.proprietor_name}}</p>
+        <p class="num">{{userLog?.register_phone_number}}</p>
+        <p class="num">{{userLog?.email}}</p>
+        <p class="num">{{userLog?.}}</p>
+    </div>
+</div> -->
+
+
+
+<div class="user-dropdown">
+    <div class="user-trigger" (click)="toggleUserDetails($event)">
+        <div class="round-small">
+            <span>{{userLog?.proprietor_name | slice: 0 : 1 }}</span>
+        </div>
+    </div>
+    
+    <div class="user-details" [ngClass]="{'show': showUserDetails}">
+        <div class="user-header">
+            <div class="round">
+                <h3 class="user-name">{{userLog?.proprietor_name | slice: 0 : 1 }}</h3>
+            </div>
+            <!-- <p class="name">{{userLog?.msg}}</p> -->
+            <p class="name">{{userLog?.proprietor_name}}</p>
+            <p class="num">{{userLog?.register_phone_number}}</p>
+            <p class="num">{{userLog?.email}}</p>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<div class="account-main">
+   
+
+    <!-- <div class="main-kyc">
+        <div>
+            <img class="usericon" src="../../../assets/user.png" alt="">
+        </div>
+        <div>
+            <p class="user-information">User Information <span><button class="start-btn"
+                        routerLink="/mobile/kyc_details" *ngIf="userLog?.kyc_status!=0">Start Now</button><button
+                        class="start-btn" routerLink="/mobile/update-kyc" *ngIf="userLog?.kyc_status==0">Start
+                        Now</button></span></p>
+            <p class="Complete">Complete your KYC to Buy, Book</p>
+        </div>
+        <div routerLink="/mobile/kyc_details" *ngIf="userLog?.kyc_status!=0">
+            <img class="keyboard" src="../../../assets/Keyboard arrow right.png" alt="">
+        </div>
+        <div routerLink="/mobile/update-kyc" *ngIf="userLog?.kyc_status==0">
+            <img class="keyboard" src="../../../assets/Keyboard arrow right.png" alt="">
+        </div>
+    </div> -->
+
+    <div class="acntInfo">
+        <p class="account">Account Information</p>
+        <p class="find">Find all your profile related information</p>
+    </div>
+
+    <div class="main-kyc">
+        <div class="kyc-content">
+            <div class="kyc-left">
+                <div class="icon-wrapper">
+                    <img class="usericon" src="../../../assets/user.png" alt="User Icon">
+                </div>
+                <div class="kyc-text">
+                    <h3>User Information</h3>
+                    <p *ngIf="userLog?.kyc_status == 0">Complete your KYC to Buy, Book</p>
+                </div>
+            </div>
+            
+            <div class="kyc-right">
+                <button class="start-btn" *ngIf="userLog?.kyc_status == 0"
+                    [routerLink]="userLog?.kyc_status !== 0 ? '/mobile/kyc_details' : '/mobile/update-kyc'">
+                    Start Now
+                </button>
+                <button class="start-btn" *ngIf="userLog?.kyc_status == 2"
+                [routerLink]="userLog?.kyc_status !== 0 ? '/mobile/kyc_details' : '/mobile/update-kyc'">
+                View KYC Details
+            </button>
+            </div>
+        </div>
+    </div>
+    <div class="create-new-main">
+        <p class="how-can">How can we help?</p>
+        <p class="we-are">We’re here for you 24x7</p>
+    </div>
+    <div class="create-new-main">
+        <img class="profile-img" src="../../../assets/add-profile 1.png" alt="">
+        <p class="create-para">Get In Touch</p>
+        <button class="contact-us-btn" routerLink="/mobile/booking">Contact Us</button>
+    </div>
+    <div class="create-new-main">
+        <!-- <img class="profile-img" src="../../../assets/add-profile 1.png" alt="">
+        <span class="profile-img"><i class="fa-solid fa-trash"></i></span> -->
+        <p class="create-para">Delete Account</p>
+        <button class="contact-us-btn" (click)="deleteUser()"><i class="fa-solid fa-trash"></i></button>
+    </div>
+    <div class="user-actions">
+        <!-- <button class="action-btn" routerLink="/mobile/kyc_details">Profile</button> -->
+        <button class="action-btn" (click)="logOut()">Logout</button>
+    </div>
+
+    <!-- <button class="logout-btn" (click)="logOut()">Logout</button> -->
+</div>

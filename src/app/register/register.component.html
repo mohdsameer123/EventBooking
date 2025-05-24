@@ -1,0 +1,230 @@
+<section class="mainclass">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="loginmaindiv">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="admin_login_logo" *ngIf="isMobile">
+            <a href="" routerLink="/mobile/mobileview"><img src="../../assets/logo.png" /></a>
+          </div>
+          <div class="admin_login_logo" *ngIf="!isMobile">
+            <a href="" routerLink=""><img src="../../assets/logo.png" /></a>
+          </div>
+          <div class="admin_login_title">
+            <h5 class="register-heading">Hello! Register to get started</h5>
+            <h6 class="Business-Information-heading" [ngStyle]="{'color': color_two}">Business Information </h6>
+          </div>
+          <label class="my-labels" [ngStyle]="{'color': color}">Business Name <span
+              class="validationError">*</span></label>
+          <div class="login-input-div">
+            <input formControlName="businessName" placeholder=" Ex: Retail Gold" type="text" class="input-filed" />
+            <div class="validationError" *ngIf="
+            registerForm.get('businessName')?.hasError('pattern') &&
+            registerForm.get('businessName')?.touched
+          ">
+              Please enter a valid name.
+            </div>
+            <div class="validationError" *ngIf="
+            registerForm.get('businessName')?.hasError('required') &&
+            registerForm.get('businessName')?.touched
+          ">
+              Business Name is required.
+            </div>
+          </div>
+
+          <label class="my-labels" [ngStyle]="{'color': color}">Person Full Name <span
+              class="validationError">*</span></label>
+          <div class="login-input-div">
+            <input placeholder=" Ex: Kumar" formControlName="personName" type="text" class="input-filed" />
+            <div class="validationError" *ngIf="
+                registerForm.get('personName')?.hasError('required') &&
+                registerForm.get('personName')?.touched
+              ">
+              Name is required.
+            </div>
+            <div class="validationError" *ngIf="
+            registerForm.get('personName')?.hasError('pattern') &&
+            registerForm.get('personName')?.touched
+          ">
+              Please enter a valid name.
+            </div>
+          </div>
+          <label class="my-labels" [ngStyle]="{'color': color}">Email <span class="validationError">*</span></label>
+          <div class="login-input-div">
+            <input placeholder=" Ex: *********@gmail.com" type="text" class="input-filed" formControlName="email" />
+            <div class="validationError" *ngIf="
+                registerForm.get('email')?.hasError('required') &&
+                registerForm.get('email')?.touched
+              ">
+              Email number is required.
+            </div>
+            <div class="validationError" *ngIf="
+                registerForm.get('email')?.hasError('email') &&
+                registerForm.get('email')?.touched
+              ">
+              Please enter a valid email.
+            </div>
+          </div>
+          <label class="my-labels" [ngStyle]="{'color': color}">Phone Number <span
+              class="validationError">*</span></label>
+          <div class="login-input-div">
+            <input minlength="10" maxlength="10" placeholder=" Ex: 891******4" type="text" class="input-filed"
+              formControlName="phone" />
+            <div class="validationError" *ngIf="
+                registerForm.get('phone')?.hasError('required') &&
+                registerForm.get('phone')?.touched
+              ">
+              Mobile number is required.
+            </div>
+            <div class="validationError" *ngIf="
+                registerForm.get('phone')?.hasError('pattern') &&
+                registerForm.get('phone')?.touched
+              ">
+              Please enter a valid mobile number.
+            </div>
+          </div>
+          <label class="my-labels" [ngStyle]="{'color': color}">Shop Establish Date <span
+              class="validationError">*</span></label>
+          <div class="login-input-div">
+            <input placeholder=" Ex: +91**********" type="date" class="input-filed" formControlName="establishedDate" />
+            <!-- Required date validation error -->
+            <div class="validationError" *ngIf="
+              registerForm.get('establishedDate')?.hasError('required') &&
+              registerForm.get('establishedDate')?.touched
+              ">
+              Date is required.
+            </div>
+
+            <!-- Future date validation error -->
+            <div class="validationError" *ngIf="
+              registerForm.get('establishedDate')?.hasError('futureDate') &&
+              registerForm.get('establishedDate')?.touched
+              ">
+            You cannot enter beyond present date.
+            </div>
+          </div>
+          <label class="my-labels" [ngStyle]="{'color': color}">Pincode <span class="validationError">*</span></label>
+          <div class="login-input-div">
+            <input placeholder=" Ex: 5*****" type="text" formControlName="pincode" minlength="6" maxlength="6"
+              (input)="getArea()" [(ngModel)]="pin" class="input-filed" />
+            <div class="validationError" *ngIf="
+                registerForm.get('pincode')?.hasError('required') &&
+                registerForm.get('pincode')?.touched
+              ">
+              Pin number is required.
+            </div>
+            <div class="validationError" *ngIf="
+                registerForm.get('pincode')?.hasError('pattern') &&
+                registerForm.get('pincode')?.touched
+              ">
+              Please enter a valid pin code.
+            </div>
+          </div>
+          <!-- <div *ngIf="isPinAvailble">
+          <label class="my-labels">Circle</label>
+          <div class="login-input-div">
+            <p *ngFor="let ar of pinArea">
+              <input type="radio" formControlName="circle" [value]="ar?.Name">
+              {{ar?.Name}}
+            </p>
+            <div class="validationError"
+            *ngIf="registerForm.get('circle')?.hasError('required') && registerForm.get('circle')?.touched">
+            Circle is required.
+          </div>
+          </div>
+          <label class="my-labels">City</label>
+          <div class="login-input-div">
+            <input
+            type="text"
+            class="input-filed" [(ngModel)]="isCity" formControlName="city" readonly
+          />
+          </div>
+          <label class="my-labels">State</label>
+          <div class="login-input-div">
+            <input
+            type="text"
+            class="input-filed" [(ngModel)]="isState" formControlName="state" readonly
+          />
+          </div>
+          <label class="my-labels">Business Address</label>
+          <div class="login-input-div">
+            <input
+              placeholder=" Ex: Hyderabad"
+              type="text"
+              class="input-filed" formControlName="businessAddress"
+            />
+            <div class="validationError"
+            *ngIf="registerForm.get('businessAddress')?.hasError('required') && registerForm.get('businessAddress')?.touched">
+            Business address is required.
+          </div>
+          </div>
+        </div> -->
+
+          <div *ngIf="isPinAvailble">
+            <div class="input">
+              <label class="my-labels" [ngStyle]="{'color': color}">Circle <span
+                  class="validationError">*</span></label>
+              <p *ngFor="let ar of pinArea" class="radio">
+                <input type="radio" formControlName="circle" [value]="ar?.Name" />
+                {{ ar?.Name }}
+              </p>
+              <div class="validationError" *ngIf="
+                  registerForm.get('circle')?.hasError('required') &&
+                  registerForm.get('circle')?.touched
+                ">
+                Business address is required.
+              </div>
+            </div>
+
+            <div class="input">
+              <label for="lname" class="my-labels" [ngStyle]="{'color': color}"> City <span
+                  class="validationError">*</span></label>
+              <div>
+                <input type="text" id="lname" formControlName="city" [(ngModel)]="isCity" class="input-filed"
+                  readonly />
+              </div>
+            </div>
+
+            <div class="input">
+              <label for="lname" class="my-labels" [ngStyle]="{'color': color}">State <span
+                  class="validationError">*</span></label>
+              <div>
+                <input type="text" id="lname" formControlName="state" [(ngModel)]="isState" class="input-filed"
+                  readonly />
+              </div>
+            </div>
+            <div class="input">
+              <label for="lname" class="my-labels" [ngStyle]="{'color': color}">Business Address<span
+                  class="validationError">*</span></label>
+              <div>
+                <textarea class="input-filed" formControlName="businessAddress"></textarea>
+              </div>
+              <div class="validationError" *ngIf="
+                  registerForm.get('businessAddress')?.hasError('required') &&
+                  registerForm.get('businessAddress')?.touched
+                ">
+                Business address is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="loginbotn-div">
+            <button class="login-btn" type="submit" [ngStyle]="{'background-color': color_two}"
+              *ngIf="registerForm.valid">
+              Register
+            </button>
+            <button class="login-btn-invalid" type="submit" *ngIf="!registerForm.valid"
+              [disabled]="!registerForm.valid">
+              Register
+            </button>
+          </div>
+          <div class="admin_login_content">
+            <p>
+              Already have an account?
+              <span class="Register-spans" [ngStyle]="{'color': color}" routerLink="/login">Login Now</span>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

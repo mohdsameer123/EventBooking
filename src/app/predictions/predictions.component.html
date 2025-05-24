@@ -1,0 +1,45 @@
+
+
+    <div class="container ">
+        <div class="row custom_section">
+
+
+            <div class="col-md-6" style="height: 500px;">
+              <ngx-charts-line-chart
+                [results]="lineChartData24"
+                [legend]="showLegend"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel24"
+                [autoScale]="true"
+                [animations]="true"
+                [tooltipDisabled]="false"
+
+                >
+              </ngx-charts-line-chart>
+            </div>
+            <div class="col-md-6" style="height: 500px;">
+                <ngx-charts-line-chart
+                  [results]="lineChartDataSilver"
+                  [legend]="showLegend"
+                  [xAxis]="showXAxis"
+                  [yAxis]="showYAxis"
+                  [showXAxisLabel]="showXAxisLabel"
+                  [showYAxisLabel]="showYAxisLabel"
+                  [xAxisLabel]="xAxisLabel"
+                  [yAxisLabel]="yAxisLabelSilver"
+                  [autoScale]="true"
+                  [animations]="true"
+                  [tooltipDisabled]="false"
+
+                  >
+                </ngx-charts-line-chart>
+              </div>
+          </div>
+    </div>
+
+
+

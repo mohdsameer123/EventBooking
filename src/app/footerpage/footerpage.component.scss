@@ -1,0 +1,290 @@
+// footer-section
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200&family=Lora:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&display=swap');
+
+// span,
+// p {
+//   padding: 0px;
+//   margin: 0px;
+// }
+
+.footer-sections {
+  background-color: #081041;
+  width: 100%;
+  // margin-top: 40px;
+  color: white;
+  padding: 20px;
+}
+
+.xyug {
+  color: #23BBED;
+}
+
+.xyug:hover {
+  color: #52e9e9;
+}
+
+.icons-main img {
+  width: 155px;
+  height: 51.87px;
+}
+
+.footer-main-heading {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 600;
+  color: #e1b737;
+}
+
+.footer-sub-heading {
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+}
+
+.footer-sub-heading:hover {
+  color: #e1b737 !important;
+
+  p {
+    color: #e1b737 !important;
+  }
+
+}
+
+.addrees-para {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 700;
+  color: #E1B737;
+}
+
+/* Apply hover effect */
+.hoverEffect:hover img {
+  transform: scale(0.9);
+  /* Scale down the image to 90% of its original size */
+  transition: transform 0.3s ease;
+  /* Smooth transition */
+}
+
+a {
+  text-decoration: none;
+}
+
+.my-para {
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+
+  // margin-right: 13px;
+  a {
+    color: white;
+  }
+}
+
+.my-para:hover {
+  color: #e1b737;
+}
+
+.distributor-GoldSikka {
+  font-family: "Inter";
+  margin-top: 13px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+}
+
+.down-footer {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+}
+
+.footer-cardss p {
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  // padding-top: 12px;
+  margin-bottom: 0px;
+}
+
+.column-three a {
+  text-decoration: none;
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+}
+
+.column-two a {
+  text-decoration: none;
+}
+
+.column-one a {
+  text-decoration: none;
+}
+
+.Design-xyugtechnologies {
+  margin-top: 57px;
+}
+
+.line-bordered {
+  border: 1px solid #e1b737;
+  width: 100px;
+  margin: 5px 0px 25px 0px;
+}
+
+.footer-cardss {
+  // box-shadow: 0px 0px 8px 0px grey;
+  border-radius: 5px;
+  // padding: 17px;
+  // margin-top: 13px;
+  // height: 130px;
+}
+
+.mylastpara {
+  padding-top: 59px;
+}
+
+.copy-right-div {
+  // background-color: #192259;
+  color: white;
+  padding: 5px 0px;
+  background: linear-gradient(to right, #192259 0%, #414F9B 0%, #2E397A 17%, #1F296A 47%, #0B1553 100%);
+}
+
+.twnetygoldfourgoldsikka {
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  padding-top: 12px
+}
+
+
+.faceicons i {
+  margin-right: 12px;
+  margin-top: -4px;
+
+}
+
+.faceicons a {
+  text-decoration: none;
+  color: white;
+
+}
+
+.twiter_icon {
+  width: 14px;
+  height: 14px;
+  align-items: center !important;
+}
+
+.rightdiv-two {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.faceicons {
+  display: flex;
+  gap: 10px;
+  /* Adjust gap between icons if needed */
+  align-items: center;
+}
+
+.faceicons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  /* Set width of each icon container */
+  height: 40px;
+  /* Set height of each icon container */
+}
+
+.faceicons i,
+.faceicons .twiter_icon {
+  font-size: 22px;
+  /* Adjust icon size if needed */
+  width: 17px;
+  /* Ensure icons take full width of container */
+  height: 17px;
+  /* Ensure icons take full height of container */
+}
+
+.twiter_icon {
+  width: 24px;
+  /* Adjust image size for the Twitter icon */
+  height: 24px;
+}
+
+@media (max-width: 500px) {
+  .footer-sections {
+    padding: 0px;
+  }
+
+  .footer-cardss {
+    height: auto;
+  }
+
+  .distributor-GoldSikka {
+    font-size: 25px;
+  }
+
+  .addrees-para {
+    font-size: 15px;
+  }
+
+  .footer-cardss p {
+    font-size: 14px;
+  }
+
+  .twnetygoldfourgoldsikka {
+    font-size: 13px;
+  }
+
+  .rightdiv-two {
+    display: flex;
+    /* justify-content: flex-end; */
+    align-items: center;
+  }
+
+  .faceicons {
+
+    margin-top: 50px;
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Adjust styles for smaller screens */
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .column-one,
+  .column-two,
+  .column-three {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .footer-cardss {
+    height: auto;
+  }
+}

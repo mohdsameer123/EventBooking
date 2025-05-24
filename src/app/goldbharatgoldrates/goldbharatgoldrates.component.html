@@ -1,0 +1,30 @@
+<section class="wrapper-sections">
+  <div class="container">
+    <div class="wrappers-div">
+      <h1 class="my-gold-headings">
+        Gold <span class="span-div">Live Price / Gram</span>
+      </h1>
+      <img src="../../assets/redpulse.gif" class="red-pulse" alt="" />
+    </div>
+
+    <p class="rupees-symbol">
+      ₹<span class="counter-value" [style.color]="spotGoldColor">{{
+        spotGoldUpdate
+      }}</span>
+    </p>
+
+    <div class="wrappers-div mt-5">
+      <h1 class="my-gold-headings-one">
+        Silver <span class="span-div">Live Price / 10 Grams</span>
+      </h1>
+      <img src="../../assets/redpulse.gif" class="red-pulse" alt="" />
+    </div>
+    <div>
+      <p class="rupees-symbol mt-2">
+        ₹<span class="counter-value-two" [style.color]="spotSilverColor">{{
+          spotSilverUpdate  | number : "3.1-2"
+        }}</span>
+      </p>
+    </div>
+  </div>
+</section>

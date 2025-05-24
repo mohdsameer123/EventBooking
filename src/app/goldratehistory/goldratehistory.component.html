@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+      <div class="maindiv">
+
+        <div class="container mt-5">
+
+          <div class="main-table">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th>Carat</th>
+                  <th>Purity</th>
+                  <th>Price per Gram</th>
+
+                  <th>Live Date</th>
+                  <th>Currency</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of records | paginate: { itemsPerPage: 10, currentPage: page }">
+                  <td class="tdclass">{{ record.carat }}</td>
+                  <td class="tdclass">{{ record.purity }}</td>
+                  <td class="tdclass">{{ record.sell_price_per_gram }}</td>
+
+                  <td class="tdclass">{{ record.live_date | date }}</td>
+                  <td class="tdclass">{{ record.currency?.split('-')[1] }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="mb-0 text-center"><pagination-controls (pageChange)="page = $event"></pagination-controls></p>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

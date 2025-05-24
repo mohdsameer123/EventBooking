@@ -1,0 +1,69 @@
+<section class="first-sec">
+    <h2 class="head" [style.color]="bookingPage.headColor">Contact Us</h2>
+    <div>
+        <div class="box">
+
+            <div class="gold-live-main">
+                <div class="d-flex">
+                    <p class="labelhead" [style.color]="bookingPage.labelheadColor"><i
+                            class="fa-solid fa-phone my-phone"></i> &nbsp;&nbsp;Booking Number : </p>
+                    <p class="gold-live" [style.color]="bookingPage.goldliveColor">
+                        <a href="tel:9160006702" class="footer-sub-heading" target="_blank">
+                            {{bookingPage.BookingNumber}}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+
+            <div class="gold-live-main">
+                <div class="d-flex">
+                    <p class="labelhead" [style.color]="bookingPage.labelheadColor"> <i
+                            class="fa-regular fa-envelope"></i>
+                        &nbsp;&nbsp;Account Create : </p>
+                    <p class="gold-live" [style.color]="bookingPage.goldliveColor"><a
+                            href="https://mail.google.com/mail/u/0/?fs=1&amp;tf=cm&amp;to=info@tavishibullion.com"
+                            target="_blank">{{bookingPage.AccountCreate}}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+
+            <div class="gold-live-main">
+                <div class="d-flex">
+                    <p class="labelhead" [style.color]="bookingPage.labelheadColor"> <i
+                            class="fa-brands fa-whatsapp"></i>&nbsp;&nbsp;WhatsApp Number : </p>
+                    <p class="gold-live" [style.color]="bookingPage.goldliveColor"><a href="https://wa.me//9160006702"
+                            class="footer-sub-heading" target="_blank">{{ bookingPage.BookingNumber }}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+
+            <div class="gold-live-main">
+                <div class="d-flex">
+                    <p class="labelhead" [style.color]="bookingPage.labelheadColor"><i
+                            class="fa-solid fa-headset"></i>&nbsp;&nbsp;Technical Support : </p>
+                    <p class="gold-live" [style.color]="bookingPage.goldliveColor"><a
+                            href="https://mail.google.com/mail/u/0/?fs=1&amp;tf=cm&amp;to=info@tavishibullion.com"
+                            target="_blank">{{bookingPage.TechnicalSupport}}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+
+            <div class="gold-live-main">
+                <div class="d-flex">
+                    <p class="labelhead" [style.color]="bookingPage.labelheadColor"><i
+                            class="fa-solid fa-location-dot"></i>&nbsp;&nbsp; Address : </p>
+                    <p class="gold-live gold-live-add" [style.color]="bookingPage.goldliveColor">{{bookingPage.Address}}
+                    </p>
+                </div>
+                <div>
+                    <iframe [src]="url" height="100%" class="mymap-image" allowfullscreen=""
+                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,18 @@
+<div class="footer-background" *ngIf="isLogin">
+    <div class="box1" routerLink="/mobile/mobileview" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> 
+        <img class="icon" src="../../../assets/Chart.png" alt="">
+        <p class="live-rates-para">Home</p>
+    </div>
+    <div class="box1" routerLink="/mobile/orders" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <img class="icon" src="../../../assets/Bookmark.png" alt="">
+        <p class="live-rates-para">My Orders</p>
+    </div>
+    <div class="box1" routerLink="/mobile/menu" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <img class="icon" src="../../../assets/Category.png" alt="">
+        <p class="live-rates-para">Menu</p>
+    </div>
+    <div class="box1" routerLink="/mobile/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <img class="icon" src="../../../assets/Profile.png" alt="">
+        <p class="live-rates-para">Profile</p>
+    </div>
+</div>

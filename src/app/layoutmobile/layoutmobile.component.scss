@@ -1,0 +1,24 @@
+/* styles.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    flex: 1 0 auto;
+    padding-bottom: 60px; /* Adjust based on footer height */
+  }
+  
+  .footer {
+    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+   
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+  

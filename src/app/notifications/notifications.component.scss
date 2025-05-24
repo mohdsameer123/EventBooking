@@ -1,0 +1,593 @@
+@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+body {
+   background-color: #673AB7;
+   color: #ffffff;
+   font-family: 'Calibri', sans-serif !important
+}
+
+.container {
+   margin-top: 100px;
+}
+
+.card {
+   position: relative;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+   -ms-flex-direction: column;
+   flex-direction: column;
+   min-width: 0;
+   word-wrap: break-word;
+   background-color: #fff;
+   background-clip: border-box;
+   border: 0px solid transparent;
+   border-radius: 0px;
+   background-color: #010A43;
+   color: white !important;
+}
+
+.btn {
+   cursor: pointer;
+   border: 1px solid;
+   font-size: 12px;
+   color: white;
+}
+
+.optionTake {
+   padding: 20px;
+   border-radius: 3px;
+}
+
+.formselect-gold-value {
+   width: 30%;
+   padding: 10px;
+   border-radius: 6px;
+   background: #192259;
+   font-family: Inter;
+   font-size: 16px;
+   font-weight: 400;
+   color: #ffffff;
+   border: 1px solid #464E8A;
+   margin-bottom: 25px;
+   margin-top: 5px;
+
+}
+
+.card-body {
+   -webkit-box-flex: 1;
+   -ms-flex: 1 1 auto;
+   flex: 1 1 auto;
+   padding: 1.25rem;
+}
+
+.card .card-title {
+   position: relative;
+   font-weight: 600;
+   margin-bottom: 10px;
+   font-size: 17px;
+}
+
+
+.table {
+   width: 100%;
+   // max-width: 100%;
+   // margin-bottom: 1rem;
+   // padding: .5rem 1rem;
+   background-color: transparent;
+   color: #ffffff;
+
+}
+
+.table tr th,
+table tr td {
+   border: 0.5px solid #ffffff4b;
+}
+
+td {
+   padding: .5rem 1rem;
+}
+
+* {
+   outline: none;
+}
+
+.table th,
+.table thead th {
+   font-weight: 500;
+}
+
+
+.table thead th {
+   vertical-align: bottom;
+   // border-bottom: 2px solid #dee2e6;
+}
+
+
+.table th {
+   padding: 1rem;
+   vertical-align: top;
+   border-top: 1px solid #dee2e6;
+}
+
+
+.table th,
+.table thead th {
+   font-weight: 500;
+}
+
+
+th {
+   text-align: inherit;
+}
+
+
+.m-b-20 {
+   margin-bottom: 20px;
+}
+
+
+.customcheckbox {
+   display: block;
+   position: relative;
+   padding-left: 24px;
+   font-weight: 100;
+   margin-bottom: 12px;
+   cursor: pointer;
+   font-size: 22px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+
+.customcheckbox input {
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+}
+
+.checkmark {
+   position: absolute;
+   top: -3px;
+   left: 0;
+   height: 20px;
+   width: 20px;
+   background-color: #CDCDCD;
+   border-radius: 6px;
+}
+
+
+.customcheckbox input:checked~.checkmark {
+   background-color: #2196BB;
+}
+
+
+.customcheckbox .checkmark:after {
+   left: 8px;
+   top: 4px;
+   width: 5px;
+   height: 10px;
+   border: solid white;
+   border-width: 0 3px 3px 0;
+   -webkit-transform: rotate(45deg);
+   -ms-transform: rotate(45deg);
+   transform: rotate(45deg);
+}
+
+.noData {
+   text-align: center;
+   margin-top: 80px;
+}
+
+.formselect-gold {
+   width: 100%;
+   padding: 13px;
+   border-radius: 6px;
+   background: #fcfcfc;
+   font-family: Inter;
+   font-size: 16px;
+   font-weight: 400;
+   color: #101729;
+   border: none;
+   margin-top: 8px;
+   margin-bottom: 0px !important;
+
+}
+
+.customtable {
+   text-align: left;
+}
+
+.head_align {
+   text-align: left;
+}
+
+.buy-gold-popup {
+   width: 100%;
+   border-radius: 6px;
+   background-color: #f3e8c9;
+   font-family: Inter;
+   font-size: 16px;
+   font-weight: 600;
+   color: #101729;
+   padding: 13px;
+   border: none;
+   margin-top: 40px;
+}
+
+.validationError {
+   color: red;
+}
+
+.buy-gold-popup-valid {
+   width: 100%;
+   border-radius: 6px;
+   background-color: #e1b737;
+   font-family: Inter;
+   font-size: 16px;
+   font-weight: 600;
+   color: #101729;
+   padding: 13px;
+   border: none;
+   margin-top: 40px;
+}
+
+.ppending {
+   margin-top: 0;
+   padding: 0px !important;
+   margin-bottom: 0rem;
+   background-color: yellow;
+   color: rgb(92, 92, 86);
+   border-radius: 5px;
+   font-weight: bold;
+}
+
+.psubmited {
+   margin-top: 0;
+   padding: 0px !important;
+   margin-bottom: 0rem;
+   background-color: rgb(115, 255, 0);
+   color: rgb(92, 92, 86);
+   border-radius: 5px;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.pconform {
+   margin-top: 0;
+   padding: 0px !important;
+   margin-bottom: 0rem;
+   background-color: rgb(43, 86, 7);
+   color: #ffffff;
+   border-radius: 5px;
+   font-weight: bold;
+}
+
+.prejected {
+   margin-top: 0;
+   padding: 0px !important;
+   margin-bottom: 0rem;
+   background-color: rgb(204, 27, 27);
+   color: #ffffff;
+   border-radius: 5px;
+   font-weight: bold;
+}
+
+p {
+   color: black;
+}
+
+/* component.css */
+::ng-deep body {
+   background-color: #010A43;
+   color: white;
+}
+
+//  background-color: #010A43;
+//  color: white;
+.mainclass {
+   background-color: #010A43;
+   // min-height: 64vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100% !important;
+   color: #ffffff;
+}
+
+.loginmaindiv {
+   border-radius: 10px;
+   width: 100%;
+   margin: 6px auto;
+   padding: 8px 32px 25px 32px;
+   background-color: #010A43;
+   color: #ffffff;
+
+}
+
+.otp-verifications {
+   font-family: 'Noto Sans';
+   font-size: 24px;
+   font-weight: 700;
+   color: #ffffff;
+   margin-top: 32px;
+}
+
+.verification-code {
+   // font-family: 'Noto Sans';
+   font-size: 15px;
+   font-weight: 500;
+   color: #ffffff;
+   margin-top: 8px;
+   width: 100%;
+}
+
+.checkColor {
+   background-color:
+      #010A43;
+}
+
+.ResendDiv {
+   margin-top: 56px;
+}
+
+.ResendDiv p {
+   color: #8391A1;
+   font-family: 'Noto Sans';
+   font-size: 14px;
+   text-align: center;
+}
+
+.myGoldColor {
+   color: #E1B737;
+   font-weight: bold;
+
+}
+
+.mySilverColor {
+   color: #C0C0C0;
+   font-weight: bold;
+}
+
+.Resend-span {
+   font-family: 'Noto Sans';
+   font-size: 16px;
+   font-weight: 600;
+   color: #E1B737;
+   cursor: pointer;
+}
+
+.admin_login_title {
+   border-radius: 5px;
+   border: 1px solid #464E8A;
+   padding: 12px 0px 0px 19px;
+   background-color: #192259;
+   margin-bottom: 10px;
+
+}
+
+.login-input-div {
+   position: relative;
+}
+
+.btn-close {
+   border: 1px solid #E7E4E4;
+   background-color: #ffffff;
+}
+
+.login-btn-invalid {
+   width: 100%;
+   font-family: 'Inter';
+   font-weight: 600;
+   border: none;
+   border-radius: 5px;
+   padding: 11px 12px;
+   font-size: 16px;
+   background-color: #c8bfa2;
+   color: #101729;
+   // box-shadow: 0px 10px 20px 0px #EFE3BD;
+}
+
+.login-btn {
+   width: 100%;
+   font-family: 'Inter';
+   font-weight: 600;
+   border: none;
+   border-radius: 5px;
+   padding: 11px 12px;
+   font-size: 16px;
+   background-color: #E1B737;
+   color: #101729;
+
+}
+
+.myheading-models {
+   color: #ffffff;
+}
+
+.number-icon {
+   position: absolute;
+   left: 12px;
+   top: 12px;
+}
+
+.number-icon p {
+   font-family: 'Inter';
+   font-size: 16px;
+   font-weight: 700;
+   color: #000000;
+}
+
+.input-filed {
+   width: 100%;
+   padding: 12px 50px;
+   margin-bottom: 10px;
+   border-radius: 6px;
+   background: #192259;
+   color: #ffffff;
+   border: 1px solid #464E8A;
+   font-family: 'Inter';
+   font-size: 16px;
+   font-weight: 500;
+}
+
+::ng-deep .ngx-pagination {
+   .current {
+      background:#E1B737!important;
+   }
+
+   a {
+      color: #fff !important;
+      text-decoration: none;
+   }
+}
+
+.notification{
+   border: 1px solid #919191;
+   margin: 7px;
+   padding: 10px;
+   border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+   .table-container {
+      margin-bottom: 10px;
+   }
+
+   .customtable1 {
+      border: 1px solid #fff;
+      display: block;
+      margin-bottom: 10px;
+
+   }
+
+   .formselect-gold-value {
+      width: 100%;
+   }
+
+   .noData {
+      margin: 90px 0px;
+   }
+
+   // .table-container {
+
+   //    width: 100%;
+   //    overflow-y: auto;
+   //    overflow-x: auto;
+   // }
+
+   // .table {
+   //    overflow-x: scroll;
+   //    overflow: hidden;
+   //    width: 1500px;
+   // }
+
+   // .formselect-gold-value {
+   //    padding: 5px 13px;
+   // }
+
+   .table-responsive1 {
+      display: none;
+   }
+
+   .customtable {
+      display: none;
+   }
+
+   .thead-light {
+      display: none;
+   }
+
+}
+
+@media (min-width:1024px) {
+   .customtable1 {
+      display: none;
+   }
+
+}
+
+/* Notification Card Styles */
+.notification {
+   background: linear-gradient(145deg, #0b1f34, #2c649f);
+   color: #ffffff; /* White text for readability */
+   border-radius: 12px; /* Smooth rounded corners */
+   padding: 20px; /* Spacing inside the card */
+   margin-bottom: 20px; /* Space between notifications */
+   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Elevated shadow for 3D effect */
+   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
+ }
+ 
+ .notification:hover {
+   transform: scale(1.03); /* Slight zoom effect on hover */
+   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+   background: linear-gradient(145deg, #0b1f34, #2c649f); /* Slightly darker background on hover */
+ }
+ 
+ /* Layout with Flexbox */
+ .row {
+   display: flex;
+   flex-wrap: wrap; /* Wrap for responsive design */
+   margin: 0; /* Reset default margin */
+ }
+ 
+
+ 
+ /* Typography */
+ p {
+   margin: 0; /* Reset default margins */
+   font-size: 16px; /* Standard font size */
+   line-height: 1.5; /* Improve readability */
+ }
+ 
+ b {
+   color: #f39c12; /* Highlight bold text */
+ }
+ 
+ span {
+   color: #00a659; /* Highlight for Order ID or Type */
+ }
+ 
+ .status {
+   font-weight: bold;
+   color: #e1b737; /* Bright color for status */
+ }
+ 
+ .description {
+   font-style: italic;
+   color: #ecf0f1; /* Lighter text color */
+ }
+ 
+ /* Date and Time */
+ .date-time {
+   font-size: 14px; /* Smaller font for secondary information */
+   color: #bdc3c7; /* Subtle text color */
+   margin-top: 10px; /* Add spacing above */
+ }
+ 
+ /* Card Header Styling */
+ .card-header {
+   font-size: 18px;
+   font-weight: bold;
+   color: #f1c40f; /* Gold color for header */
+   margin-bottom: 10px;
+ }
+ 
+ /* Hover Effects for Text */
+ .notification:hover b,
+ .notification:hover span {
+   color: #f39c12; /* Highlight important text on hover */
+ }
+ 
+ .notification:hover .status {
+   color: #e67e22; /* Make status more vibrant on hover */
+ }
+ 
+ .notification:hover .description {
+   color: #ffffff; /* Bring description into focus on hover */
+ }
+ 

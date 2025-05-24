@@ -1,0 +1,179 @@
+
+{
+    "company": {
+      "logo": "assets/logo.png",
+      "address": "1234 Company St, City, Country",
+      "privacyPolicy": "assets/privacy_policy.html",
+      "companyname": "Gold Bharat",
+      "globalBackGroundColor": "#192259",
+      "color": "#ffff",
+      "cardBackGroundColor": "#192259"
+     },
+     "atLoginPage":{
+
+        "loginButtonColor": "#e1b737",
+        "loginPageBackgroundColor": "#010A43",
+        "loginPageCardColor": "#192259"
+     },
+     "atRegistrationPage":{
+        "mainHeading": "#e1b737",
+      "labelColor": "#FAAD39"
+
+     },
+
+    "theme": {
+      "primaryColor": "#ff5733",
+      "secondaryColor": "#33c4ff",
+      "headerBackgroundColor": "#192259",
+      "loginButtonColor": "#e1b734",
+       "activeColor": "#e1b737",
+      "footerBackgroundColor": "#192259",
+       "headerClickColor": "#e1b737"
+
+
+    },
+
+    "images": {
+    "logo": "assets/logo.png"
+  },
+
+  "contact": {
+    "phoneNumbers": ["1800 8906 122", "040 23222175"],
+    "timings": "Mon - Sat : 9:30 AM to 6:30 PM",
+    "whatsappNumber": "+91 91600 06702",
+    "email": "info@tavishibullion.com",
+    "address": "Tavishi Bullion 2nd Floor, Ashoka Raghupathi Chambers, #1-10-60, Adj to Prakash Nagar Metro Station, Begumpet, Hyderabad, Telangana, 500016 India."
+  },
+  "locateUs": {
+    "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.320017069927!2d78.46306547421092!3d17.44439070116234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90a36223132b%3A0x56f6b02c055805b6!2sGoldsikka%20Limited!5e0!3m2!1sen!2sin!4v1709896814533!5m2!1sen!2sin",
+    "phoneNumbers": ["91600 06702"],
+    "email": "info@tavishibullion.com",
+    "address": "Tavishi Bullion 2nd Floor, Ashoka Raghupathi Chambers, #1-10-60, Adj to Prakash Nagar Metro Station, Begumpet, Hyderabad, Telangana, 500016 India.",
+    "loacteSectionBackgroundColor": "#192259"
+  },
+  "policy": {
+    "title": "GENERAL POLICY",
+    "sections": [
+      {
+        "heading": "1. GENERAL CONDITION OF USE.",
+        "content": "Welcome to Gold Bharat (\"this Website\"), a website owned and operated by Goldsikka Private Limited. We, Tavishi Bullion and/or our designated affiliates (jointly \"Goldsikka\") provide website features to you, the user subject to your acceptance of the following Terms and Conditions of Access and Use, constituting an agreement between us (\"Agreement\"). If you continue to use this Website or communicate with us, you will be deemed to have accepted these Terms and Conditions of Access and Use. Please read these Terms and Conditions of Access and Use carefully. In addition, when you use any current or future Goldsikka service or business you will also be subject to the guidelines, terms and agreements applicable to such service or business (\"Specific Terms\"). If the Terms and Conditions of Access and Use are expressly inconsistent with such Specific Terms, the Specific Terms will prevail. Goldsikka may revise these Terms and Conditions of Access and Use from time to time and at any time, without notice to you. If you do not agree to be bound by these Terms and Conditions of Access and Use, as modified from time to time, you should leave this Website immediately. The section titles in these Terms and Conditions of Access and Use are for convenience only and have no legal effect."
+      },
+      {
+        "heading": "2. ACCEPTANCE OF DISCLAIMERS AND EXCLUSIONS.",
+        "content": "You acknowledge that the disclaimers and exclusions of liability set forth in these Terms and Conditions of Access and Use represent a fair and reasonable allocation of the risks and benefits of the Agreement between you and us, taking all relevant factors into consideration. You agree that these disclaimers and limitations shall be enforceable to the fullest extent permitted by applicable law. You agree that regardless of any statute or law to the contrary, any claim or cause of action arising out of or related to use of this Website or these Terms and Conditions of Access and Use must be filed within one (1) year after such claim or cause of action arose or be forever barred."
+      },
+      {
+        "heading": "3. BUSINESS RULES.",
+        "content": "These Terms and Conditions of Access and Use shall be read in conjunction with the Business Rules of Goldsikka and of this Website, as available on this Website. Goldsikka may revise these Business Rules from time to time and at any time without notice to you."
+      },
+      {
+        "heading": "4. COPYRIGHT.",
+        "content": "All content included in this Website such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations and software is the property of Goldsikka or its content suppliers and is protected by international copyright laws. All software used on this site is the property of Goldsikka or its software suppliers and is protected by international copyright laws. The content of this Website cannot be copied, reproduced, republished, uploaded, posted, transmitted or distributed for any non-personal use without the prior written approval of Goldsikka. Graphics, logos, page headers, button icons, scripts and service names contained in or features in this Website are trademarks or trade dress of Goldsikka. Goldsikka's trademarks may not be used in connection with any other product or service in any manner that is likely to cause confusion, disparage or discredit regarding Goldsikka and its products and services. All trademarks not owned by Goldsikka that appear in this site are the property of their respective owners, who may or may not be affiliated with connected to or sponsored by Goldsikka."
+      },
+      {
+        "heading": "5. DISPUTES.",
+        "content": "Any dispute or claim relating in any way to your visit to this Website or to products or services sold or distributed by Goldsikka or through this Website will be resolved first by arbitration. The Indian Arbitration and Conciliation Act of 1996 applies to this agreement. To begin an arbitration proceeding, you must send a letter requesting arbitration and describing your claim in detail to our address available on this Website. The arbitration will be conducted in Mumbai by an independent arbitrator appointed by Goldsikka. The costs of arbitration proceedings will be borne by the party so instructed by the arbitrator on merits of the case. We each agree that any dispute resolution proceedings will be conducted only on an individual basis and not in a class, consolidated or representative action."
+      },
+      {
+        "heading": "6. GOVERNING LAW AND JURISDICTION.",
+        "content": "By visiting this Website, you agree to be bound by the applicable Indian laws and State laws including those pertaining to taxation. This Agreement has been executed and delivered in India and its interpretations, validity and performance shall be construed and enforced in accordance with the laws of the Republic of India without regard to principles of conflict of laws and shall be subject to the exclusive jurisdiction of courts at Mumbai, India."
+      },
+      {
+        "heading": "7. PRICING.",
+        "content": "Represents the value of the respective product. For certain transactions, you shall bear fees and charges in addition to payment for prices displayed on this Website. Such additional fees and charges shall be as are stated on the website. Please pay attention to the details of your transactions, because your total price for a transaction may include taxes, fees and shipping costs.our order payment is due within 2 days after placing your booking order, which you are responsible for paying. With respect to services provided or products sold by Goldsikka, we cannot confirm the cost of a service or the price of a product until you order. Despite our best efforts, a small number of the items in our catalogue may be mispriced. If an item's correct price is higher than our stated price, we will, at our discretion, either contact you for instructions before shipping or cancel your order and notify you of such cancellation. A late fee of ₹110 per gram for gold and ₹1000 per kg for silver will be applied to orders not paid within the 2-day"
+      },
+      {
+        "heading": "8. RETURNS, REPLACEMENT AND TITLE.",
+        "content": "Goldsikka does not take title to returned items until the item arrives at our designated address. For more information about our returns and replacement, please see our Replacement Policy."
+      },
+      {
+        "heading": "9. Refund Policy.",
+        "content": "Once physical position process is started it cannot be reverted back but the trade can be squared up by repurchase. Goldsikka will repurchase Gold / Silver at market momentum rate. Customer can Refund their Gold from Goldsikka at any time. Transaction charges are applicable. If the customer wants to cancel his transaction within 24 hours a transaction fee will be collected and remaning amount will be transfered to his/her bank account."
+      },
+      {
+        "heading": "10. Delivery Policy.",
+        "content": "Gold or Silver Delivery will be in your Town/City with Registered and Recognized Jeweller or Bullion trader in quality and quantity verified tamper proof pack.\n1. Delivery of your purchased Gold/Silver - Bullion will be done at notified Jeweller/Bullion Trader in your city/town, the customer kindly need to verify and satisfy with the product in terms of quantity and quality.\n2. Goldsikka do not provide home delivery for its customers for security reasons.\n3. Customer can collect their Gold/Silver at our registered partners.\n4. At the time of delivery customer has to provide Id proof."
+      }
+    ]
+  },
+  "footer": {
+    "quickLinks": [
+      { "label": "Home", "url": "/home" },
+      { "label": "About Us", "url": "/aboutus" },
+      { "label": "Products", "url": "/products" },
+      { "label": "Locate Us", "url": "/locateus" },
+      { "label": "Privacy Policy", "url": "/policy" }
+
+    ],
+    "contact": {
+      "tollFree": "1800 8906 122",
+      "phone": "040-2322 2175",
+      "whatsapp": "91600 06702",
+      "email": "info@tavishibullion.com",
+      "workingHours": "Mon-Sat(9:30 am to 6:30 pm)",
+      "note": "2nd & 4th Saturdays Holidays."
+    },
+    "companyDetails": {
+      "kycIdentifier": "90044129091284",
+      "cin": "U51909TG2019PLC130903",
+      "pan": "AAHCG7082N",
+      "tan": "HYDG18885G",
+      "gstin": "36AAHCG7082N1ZZ",
+      "iec": "AAHCG7082N",
+      "udyogAadhar": "TS02E0067316",
+      "legalEntityIdentifier": "894500HECY3CXJW19W73",
+      "mmtcGoldCode": "10882GL01",
+      "mmtcSilverCode": "10882SV01",
+      "gjepcMembership": "GJEPC/RO-CHE/7000050661/AM/1",
+      "bisCertificate": "HM/C-6390039720",
+      "isin": "INEOJ8501014",
+      "telanganaRegNo": "SEA/HYD/ALO/03/0199926/2020",
+      "companyname": "Gold Bharat Ltd",
+      "showAddressesOfDistrubutors": true
+    },
+    "downloadLinks": {
+      "android": "https://play.google.com/store/apps/details?id=com.goldsikka.gbharath&hl=en",
+      "ios": "https://apps.apple.com/in/app/goldbharat/id6443963704"
+    },
+    "socialLinks": [
+      { "platform": "facebook", "url": "https://www.facebook.com/GoldsikkaLimited", "icon": "fa-brands fa-facebook" },
+      { "platform": "instagram", "url": "https://www.instagram.com/goldsikka_limited/", "icon": "fa-brands fa-instagram" },
+      { "platform": "linkedin", "url": "https://www.linkedin.com/company/goldsikkalimited/", "icon": "fa-brands fa-linkedin" },
+      { "platform": "twitter", "url": "https://twitter.com/goldsikkaltd", "icon": "fa-brands fa-twitter" }
+    ]
+  },
+  "bookingPage":{
+    "headColor": "#ffffff",
+    "labelheadColor":"#FAAD39",
+    "goldliveColor": "#E7E4E4",
+     "boxBackGroundColor": "#192259",
+     "boxBorderColor": "#464E8A",
+     "BookingNumber": "+91 91600 06702",
+     "AccountCreate": "info@tavishibullion.com",
+     "TechnicalSupport": "info@tavishibullion.com",
+     "Address": "Tavishi Bullion 2nd Floor, #1-10-60 to 62, Ashoka Raghupathi Chambers, Begumpet Hyderabad, Telangana-500016, India."
+  },
+  "rateAlert":{
+    "headColor": "#ffffff",
+    "mySelectBackground": "#192259",
+    "mySelectColor": "#ffffff",
+    "boxBackGroundColor": "#192259",
+    "goldLiveColor": "#E7E4E4",
+     "labels": "#FCA311",
+     "myButtonInvalidBackground": "#cdad7c",
+     "myButtonBackground": "#FAAD39"
+  },
+  "goldSilverMargin":{
+    "headColor": "#ffffff",
+    "labels": "#FCA311",
+    "mySelectGoldBackground": "#192259",
+    "mySelectGoldColor": "#ffffff"
+  },
+  "charts":{
+      "headColor": "#ffffff",
+      "mySelectGoldBackground": "#192259",
+      "mySelectGoldColor": "#ffffff"
+  }
+
+}
+

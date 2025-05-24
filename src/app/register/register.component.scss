@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;1,100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #fff;
+  width: 443px;
+  margin: 0px auto;
+  padding: 10px 35px;
+  border-radius: 10px;
+}
+.login-btn-invalid {
+  width: 100%;
+  font-family: 'Noto Sans';
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 11px 12px;
+  font-size: 16px;
+  background-color: #e6ddbf;
+  // box-shadow: 0px 10px 20px 0px #EFE3BD;
+  color: #ffffff;
+}
+.radio{
+  color: #ffffff;
+}
+.input-filed {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background: #192259;
+  border: 1px solid
+  #464E8A;
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.admin_login_logo {
+  text-align: center;
+}
+
+.admin_login_logo img {
+  // width: 100px;
+  // height: 70px;
+  cursor: pointer;
+}
+
+.admin_login_title {
+  margin-top: 1.5rem;
+}
+
+.register-heading {
+  // font-family: "Inter";
+  font-size: 24px;
+  // font-weight: 700;
+  color: #E7E4E4;
+  // width: 60%;
+  // margin: 32px 0px 24px 0px;
+}
+
+.login-icon-div {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  margin: 0px auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-btn {
+  width: 100%;
+  font-family: "Noto Sans";
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 11px 12px;
+  font-size: 16px;
+  // background-color: #e1b737;
+  // box-shadow: 0px 10px 20px 0px #efe3bd;
+  color: #ffffff;
+}
+
+.admin_login_content {
+  margin-top: 40px;
+}
+/* Assuming the calendar icon has a class named 'calendar-icon' */
+.input-filed::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Invert color to change the icon color */
+}
+
+.admin_login_content p {
+  color: #8391a1;
+  font-family: "Noto Sans";
+  font-size: 14px;
+  text-align: center;
+}
+
+// .main-section {
+//     background-color: #074646;
+//     min-height: 100vh;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100% !important;
+// }
+
+.Register-spans {
+  font-family: "Noto Sans";
+  font-size: 16px;
+  font-weight: 600;
+  // color: #e1b737;
+  cursor: pointer;
+}
+.validationError{
+  color: red;
+}
+.mainclass {
+  background-color: #010A43;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+}
+
+.loginmaindiv {
+  border-radius: 5px;
+  width: 35%;
+  margin: 56px auto;
+  border-radius: 10px;
+  padding: 40px 32px;
+  background-color: #10194E;
+  //   overflow-y: scroll;
+}
+
+.Business-Information-heading {
+  font-family: "Noto Sans";
+  font-size: 20px;
+  font-weight: 600;
+  // color: #e1b737;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+Register
+.my-labels {
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 600;
+  // color: #FAAD39;
+}
+
+.my-select {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background: #f7f8f9;
+  border: none;
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.loginbotn-div {
+  margin-top: 17px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+@media screen and (max-width: 500px) {
+  .loginmaindiv {
+    width: initial !important;
+  }
+
+  .admin_login_title h6 {
+    font-size: 18px !important;
+  }
+
+  .admin_login_content {
+    margin: initial;
+    padding-top: 10px !important;
+  }
+}
+
+@media screen and (max-width: 680px) and (min-width: 500px) {
+  .loginmaindiv {
+    width: initial !important;
+  }
+
+  .admin_login_title h6 {
+    font-size: 18px !important;
+  }
+
+  .admin_login_content {
+    margin: initial;
+    padding-top: 10px !important;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 680px) {
+  .loginmaindiv {
+    width: initial !important;
+  }
+
+  .admin_login_title h6 {
+    font-size: 18px !important;
+  }
+
+  .admin_login_content {
+    margin: initial;
+    padding-top: 10px !important;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .loginmaindiv {
+    width: 50% !important;
+  }
+
+  .admin_login_title h6 {
+    font-size: 18px !important;
+  }
+
+  .admin_login_content {
+    margin: initial;
+    padding-top: 10px !important;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 991px) {
+  .loginmaindiv {
+    width: 50% !important;
+  }
+
+  .admin_login_title h6 {
+    font-size: 18px !important;
+  }
+
+  .admin_login_content {
+    margin: initial;
+    padding-top: 10px !important;
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 500px) {
+  .loginmaindiv {
+    width: 70% !important;
+  }
+}
+
+@media screen and (max-width: 500px) and (min-width: 425px) {
+  .loginmaindiv {
+    width: 82% !important;
+  }
+}
+
+@media screen and (max-width: 425px) and (min-width: 375px) {
+  .loginmaindiv {
+    width: 90% !important;
+  }
+}
+
+// @media screen and (max-width:1440px) and (min-width:1024px){
+// .loginmaindiv {
+//         width: 35% !important;
+//     }
+
+//     .admin_login_title h6 {
+//         font-size: 18px !important;
+//     }
+
+//     .admin_login_content {
+//         margin: initial;
+//         padding-top: 10px !important;
+//     }
+// }

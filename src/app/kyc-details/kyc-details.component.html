@@ -1,0 +1,129 @@
+<div class="container">
+
+    <h2 class="head">KYC Details</h2>
+    <div class="back-arrow" (click)="goBack()">
+        <img class="backarrow-img" src="../../assets/back_arrow.png" alt="">
+    </div>
+    <div class="first-sec">
+
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="my-select-gold">
+                    <p for="" class=" statusChange">KYC Status : <b class="labels">{{userKycDetails.msg}}</b></p>
+                    <p colspan="2" class="text-white h3 text-center">Details : -</p>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+
+                <table class="table table-responsive tabele-bordered">
+
+                    <tr>
+                        <th class="my-select">
+                            Business Name 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.business_name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            Business Type 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.business_type}}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="my-select">
+                            Proprietor Name 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.proprietor_name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            Phone Number 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.register_phone_number}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            Email 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.email}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-5">
+                <table class="table table-responsive">
+
+
+                    <tr>
+                        <th class="my-select">
+                            City 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.city}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            State 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.state}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            Pin Code 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.pin_code}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            Bank Name 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.bank_name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="my-select">
+                            Account Number 
+                        </th>
+                        <td class="my-select"> : </td>
+                        <td class="my-select">
+                            {{userKycDetails.data?.account_number}}
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <!-- <p class="text-white re-update" [hidden]="userKycDetails.statusCode !== 3">Please update your KYC again <a
+            routerLink="/update-kyc" href="/update-kyc" class="text-red">Click Here</a> </p> -->
+
+            <p class="text-white re-update" *ngIf="userKycDetails.statusCode !== 2">Please update your KYC again <a
+                routerLink="/update-kyc" href="/update-kyc" class="text-red">Click Here</a> </p>
+</div>

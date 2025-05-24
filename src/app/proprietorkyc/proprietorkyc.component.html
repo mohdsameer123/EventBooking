@@ -1,0 +1,918 @@
+<section class="kyc-section">
+  <!-- sptepper-form -->
+  <!-- <div class="container">
+    <div class="stepper">
+      <div class="step completed">
+        <div class="step-circle">1</div>
+        <div class="step-title">Step 1</div>
+      </div>
+      <div class="step active">
+        <div class="step-circle">2</div>
+        <div class="step-title">Step 2</div>
+      </div>
+      <div class="step completed">
+        <div class="step-circle">3</div>
+        <div class="step-title">Step 3</div>
+      </div>
+      <div class="step completed">
+        <div class="step-circle">4</div>
+        <div class="step-title">Step 4</div>
+      </div>
+    </div>
+  </div> -->
+
+  <!--  -->
+
+  <div class="mycards-sec" *ngIf="userKycDetails.statusCode === 0 || userKycDetails.statusCode === 3">
+    <h3 class="propertier-kyc">Business KYC</h3>
+    <!-- <label class="label-business">Business KYC</label> -->
+
+    <div>
+      <select class="my-select" (change)="selectType($event)">
+        <option value="" disabled>Select Type</option>
+        <option *ngFor="let opt of menuKyc" value="{{opt}}">{{opt}}</option>
+        <!-- <option value="LLP">LLP</option>
+        <option value="Pvt Ltd">Pvt Ltd</option>
+        <option value="Ltd">Ltd</option> -->
+
+      </select>
+    </div>
+    <form [formGroup]="propriotorForm" (ngSubmit)="onSubmit()" *ngIf="isProprietor">
+
+
+      <label class="label-business">Proprietor Name</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="proprietor_name" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_name')?.hasError('required') &&
+          propriotorForm.get('proprietor_name')?.touched
+        ">
+          Name is required.
+        </div>
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_name')?.hasError('pattern') &&
+          propriotorForm.get('proprietor_name')?.touched
+        ">
+          Please enter a valid name.
+        </div>
+      </div>
+
+      <label class="label-business">Proprietor PAN</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="proprietor_pan" placeholder="Enter PAN" />
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_pan')?.hasError('required') &&
+          propriotorForm.get('proprietor_pan')?.touched
+        ">
+          pan number is required.
+        </div>
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_pan')?.hasError('pattern') &&
+          propriotorForm.get('proprietor_pan')?.touched
+        ">
+          Please enter a valid pan number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload PAN</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg"
+          (change)="onFileSelectedPro($event,'proprietor_pan_image','previewUrlPropiPan')"
+          formControlName="proprietor_pan_image" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <!-- <img *ngIf="previewUrlPan" src="{{previewUrlPan}}" alt="" > -->
+        <img *ngIf="previewUrls['previewUrlPropiPan']" [src]="previewUrls['previewUrlPropiPan']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_pan_image')?.hasError('required') &&
+          propriotorForm.get('proprietor_pan_image')?.touched
+        ">
+          Pan image is required.
+        </div>
+
+      </div>
+
+
+
+      <label class="label-business">GST Number</label>
+
+      <div>
+        <input class="myinputs" formControlName="proprietor_gst" type="text" placeholder="Enter GST Number" />
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_gst')?.hasError('required') &&
+          propriotorForm.get('proprietor_gst')?.touched
+        ">
+          gst number is required.
+        </div>
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_gst')?.hasError('pattern') &&
+          propriotorForm.get('proprietor_gst')?.touched
+        ">
+          Please enter a valid gst number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload GST Number</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg"
+          (change)="onFileSelectedPro($event, 'proprietor_gst_image', 'previewUrlPropiGst')"
+          formControlName="proprietor_gst_image" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPropiGst']" [src]="previewUrls['previewUrlPropiGst']" alt="Preview Image"
+          width="100px" height="100px">
+
+
+        <div class="validationError" *ngIf="
+          propriotorForm.get('proprietor_gst_image')?.hasError('required') &&
+          propriotorForm.get('proprietor_gst_image')?.touched
+        ">
+          GST image is required.
+        </div>
+
+      </div>
+      <label class="label-business-three">Bank Name</label>
+      <div>
+        <input type="text" placeholder="Enter Bank Name" class="my-select-three" formControlName="bank_name">
+        <div class="validationError" *ngIf="
+        propriotorForm.get('bank_name')?.hasError('required') &&
+        propriotorForm.get('bank_name')?.touched
+      ">
+          Bank name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        propriotorForm.get('bank_name')?.hasError('pattern') &&
+        propriotorForm.get('bank_name')?.touched
+      ">
+          Please enter a valid bank name.
+        </div>
+      </div>
+
+      <label class="label-business-three">A/C Number</label>
+      <div>
+        <input class="myinputs-three" type="text" formControlName="account_number" placeholder="Enter A/C Number" />
+        <div class="validationError" *ngIf="
+        propriotorForm.get('account_number')?.hasError('required') &&
+        propriotorForm.get('account_number')?.touched
+      ">
+          Account number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        propriotorForm.get('account_number')?.hasError('pattern') &&
+        propriotorForm.get('account_number')?.touched
+      ">
+          Please enter a valid account number.
+        </div>
+      </div>
+
+      <label class="label-business-three">IFSC Code</label>
+      <div>
+        <input class="myinputs-three" formControlName="ifsc_code" type="text" placeholder="Enter IFSC Code" />
+        <div class="validationError" *ngIf="
+        propriotorForm.get('ifsc_code')?.hasError('required') &&
+        propriotorForm.get('ifsc_code')?.touched
+      ">
+          IFSC code is required.
+        </div>
+        <div class="validationError" *ngIf="
+        propriotorForm.get('ifsc_code')?.hasError('pattern') &&
+        propriotorForm.get('ifsc_code')?.touched
+      ">
+          Please enter a valid IFSC code.
+        </div>
+      </div>
+
+      <label class="label-business-three">Account Holder Name</label>
+      <div>
+        <input class="myinputs-three" formControlName="account_holder_name" type="text" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+        propriotorForm.get('account_holder_name')?.hasError('required') &&
+        propriotorForm.get('account_holder_name')?.touched
+      ">
+          Account holder name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        propriotorForm.get('account_holder_name')?.hasError('pattern') &&
+        propriotorForm.get('account_holder_name')?.touched
+      ">
+          Please enter a valid account holder name.
+        </div>
+      </div>
+
+      <div>
+        <button class="Submit-botnss" *ngIf="propriotorForm.invalid" [disabled]="propriotorForm.invalid">Submit</button>
+        <button class="Submit-botns" *ngIf="propriotorForm.valid">Submit</button>
+
+      </div>
+
+    </form>
+    <form action="" *ngIf="isLpp" [formGroup]="otherForm" (ngSubmit)="onOtherSubmit()">
+      <label class="label-business">Director Name</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_name" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+        otherForm.get('director_name')?.hasError('required') &&
+        otherForm.get('director_name')?.touched
+      ">
+          Director name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('director_name')?.hasError('pattern') &&
+        otherForm.get('director_name')?.touched
+      ">
+          Please enter a valid director name.
+        </div>
+      </div>
+      <label class="label-business">Director Mobile Number</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_mobile" placeholder="Enter Mobile Number" />
+        <div class="validationError" *ngIf="
+        otherForm.get('director_mobile')?.hasError('required') &&
+        otherForm.get('director_mobile')?.touched
+      ">
+          Mobile number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('director_mobile')?.hasError('pattern') &&
+        otherForm.get('director_mobile')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Director Aadhar Number</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_aadhar" placeholder="Enter Aadhar Number" />
+        <div class="validationError" *ngIf="
+        otherForm.get('director_aadhar')?.hasError('required') &&
+        otherForm.get('director_aadhar')?.touched
+      ">
+          Aadhar number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('director_aadhar')?.hasError('pattern') &&
+        otherForm.get('director_aadhar')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload Aadhar Front Side</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg"
+          (change)="onFileSelected($event, 'director_aadhar_front_image', 'previewUrlOtherAdharF')"
+          formControlName="director_aadhar_front_image" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlOtherAdharF']" [src]="previewUrls['previewUrlOtherAdharF']"
+          alt="Preview Image" width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('director_aadhar_front_image')?.hasError('required') &&
+        otherForm.get('director_aadhar_front_image')?.touched
+      ">
+          Aadhar card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Upload Aadhar Back Side</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg"
+          (change)="onFileSelected($event, 'director_aadhar_back_image', 'previewUrlOtherAdharB')"
+          formControlName="director_aadhar_back_image" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlOtherAdharB']" [src]="previewUrls['previewUrlOtherAdharB']"
+          alt="Preview Image" width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('director_aadhar_back_image')?.hasError('required') &&
+        otherForm.get('director_aadhar_back_image')?.touched
+      ">
+          Aadhar card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Company PAN Number</label>
+
+      <div>
+        <input class="myinputs" formControlName="director_pan" type="text" placeholder="Enter PAN Number" />
+        <div class="validationError" *ngIf="
+        otherForm.get('director_pan')?.hasError('required') &&
+        otherForm.get('director_pan')?.touched
+      ">
+          Pan number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('director_pan')?.hasError('pattern') &&
+        otherForm.get('director_pan')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload PAN Card</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="director_pan_image"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelected($event, 'director_pan_image', 'previewUrlOtherPan')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlOtherPan']" [src]="previewUrls['previewUrlOtherPan']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('director_pan_image')?.hasError('required') &&
+        otherForm.get('director_pan_image')?.touched
+      ">
+          Pan card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Company GST Number</label>
+
+      <div>
+        <input class="myinputs" type="text" formControlName="director_gst" placeholder="Enter GST Number" />
+        <div class="validationError" *ngIf="
+        otherForm.get('director_gst')?.hasError('required') &&
+        otherForm.get('director_gst')?.touched
+      ">
+          GST number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('director_gst')?.hasError('pattern') &&
+        otherForm.get('director_gst')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload GST</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="director_gst_image"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelected($event, 'director_gst_image', 'previewUrlOtherGst')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlOtherGst']" [src]="previewUrls['previewUrlOtherGst']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('director_gst_image')?.hasError('required') &&
+        otherForm.get('director_gst_image')?.touched
+      ">
+          GST document is required.
+        </div>
+      </div>
+
+      <label class="label-business">Director CIN Number</label>
+
+      <div>
+        <input class="myinputs" type="text" formControlName="director_cin" placeholder="Enter CIN Number" />
+        <div class="validationError" *ngIf="
+        otherForm.get('director_cin')?.hasError('required') &&
+        otherForm.get('director_cin')?.touched
+      ">
+          CIN number is required.
+        </div>
+      </div>
+
+      <label class="label-business">Upload CIN</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="cin_number_image"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelected($event, 'cin_number_image', 'previewUrlOtherCin')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlOtherCin']" [src]="previewUrls['previewUrlOtherCin']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('cin_number_image')?.hasError('required') &&
+        otherForm.get('cin_number_image')?.touched
+      ">
+          CIN document is required.
+        </div>
+      </div>
+      <label class="label-business">Upload Your Image</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="profile_picture"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelected($event, 'profile_picture', 'previewUrlOtherPro')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlOtherPro']" [src]="previewUrls['previewUrlOtherPro']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('profile_picture')?.hasError('required') &&
+        otherForm.get('profile_picture')?.touched
+      ">
+          Profile document is required.
+        </div>
+      </div>
+
+      <label class="label-business-three">Bank Name</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="bank_name" placeholder="Enter Bank Name" />
+        <div class="validationError" *ngIf="
+        otherForm.get('bank_name')?.hasError('required') &&
+        otherForm.get('bank_name')?.touched
+      ">
+          Bank name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('bank_name')?.hasError('pattern') &&
+        otherForm.get('bank_name')?.touched
+      ">
+          Please enter a valid name.
+        </div>
+      </div>
+
+      <label class="label-business-three">A/C Number</label>
+      <div>
+        <input class="myinputs-three" type="text" formControlName="account_number" placeholder="Enter A/C Number" />
+        <div class="validationError" *ngIf="
+        otherForm.get('account_number')?.hasError('required') &&
+        otherForm.get('account_number')?.touched
+      ">
+          Account number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('account_number')?.hasError('pattern') &&
+        otherForm.get('account_number')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business-three">IFSC Code</label>
+      <div>
+        <input class="myinputs-three" formControlName="ifsc_code" type="text" placeholder="Enter IFSC Code" />
+        <div class="validationError" *ngIf="
+        otherForm.get('ifsc_code')?.hasError('required') &&
+        otherForm.get('ifsc_code')?.touched
+      ">
+          IFSC code is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('ifsc_code')?.hasError('pattern') &&
+        otherForm.get('ifsc_code')?.touched
+      ">
+          Please enter a valid code.
+        </div>
+      </div>
+
+      <label class="label-business-three">Account Holder Name</label>
+      <div>
+        <input class="myinputs-three" formControlName="account_holder_name" type="text" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+        otherForm.get('account_holder_name')?.hasError('required') &&
+        otherForm.get('account_holder_name')?.touched
+      ">
+          Name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        otherForm.get('account_holder_name')?.hasError('pattern') &&
+        otherForm.get('account_holder_name')?.touched
+      ">
+          Please enter a valid name.
+        </div>
+      </div>
+      <div>
+        <button class="Submit-botnss" *ngIf="otherForm.invalid" [disabled]="otherForm.invalid">Submit</button>
+        <button class="Submit-botns" *ngIf="otherForm.valid">Submit</button>
+
+      </div>
+    </form>
+
+
+    <!-- PVT LTD and LTD Form -->
+    <form action="" *ngIf="isPvt" [formGroup]="pvtForm" (ngSubmit)="onPvtSubmit()">
+      <label class="label-business">Director Name(First Director)</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_nameone" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_nameone')?.hasError('required') &&
+        pvtForm.get('director_nameone')?.touched
+      ">
+          Director name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_nameone')?.hasError('pattern') &&
+        pvtForm.get('director_nameone')?.touched
+      ">
+          Please enter a valid director name.
+        </div>
+      </div>
+      <label class="label-business">Director Mobile Number</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_mobile" placeholder="Enter Mobile Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_mobile')?.hasError('required') &&
+        pvtForm.get('director_mobile')?.touched
+      ">
+          Mobile number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_mobile')?.hasError('pattern') &&
+        pvtForm.get('director_mobile')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Compony Aadhar Number(First Director)</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_aadharone" placeholder="Enter Aadhar Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadharone')?.hasError('required') &&
+        pvtForm.get('director_aadharone')?.touched
+      ">
+          Aadhar number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadharone')?.hasError('pattern') &&
+        pvtForm.get('director_aadharone')?.touched
+      ">
+          Please enter a valid number.
+
+        </div>
+      </div>
+
+      <label class="label-business">Upload Aadhar Front Side(First Director)</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg"
+          (change)="onFileSelectedPvt($event, 'director_aadhar_front_imageone', 'previewUrlPvtAdharF')"
+          formControlName="director_aadhar_front_imageone" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtAdharF']" [src]="previewUrls['previewUrlPvtAdharF']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadhar_front_imageone')?.hasError('required') &&
+        pvtForm.get('director_aadhar_front_imageone')?.touched
+      ">
+          Aadhar card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Upload Aadhar Back Side(First Director)</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg"
+          (change)="onFileSelectedPvt($event, 'director_aadhar_back_imageone', 'previewUrlPvtAdharB')"
+          formControlName="director_aadhar_back_imageone" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtAdharB']" [src]="previewUrls['previewUrlPvtAdharB']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadhar_back_imageone')?.hasError('required') &&
+        pvtForm.get('director_aadhar_back_imageone')?.touched
+      ">
+          Aadhar card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Compony PAN Number(First Director)</label>
+
+      <div>
+        <input class="myinputs" formControlName="director_panone" type="text" placeholder="Enter PAN Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_panone')?.hasError('required') &&
+        pvtForm.get('director_panone')?.touched
+      ">
+          Pan number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_panone')?.hasError('pattern') &&
+        pvtForm.get('director_panone')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload PAN Card(First Director)</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="director_pan_imageone"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelectedPvt($event, 'director_pan_imageone', 'previewUrlPvtPan')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtPan']" [src]="previewUrls['previewUrlPvtPan']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_pan_imageone')?.hasError('required') &&
+        pvtForm.get('director_pan_imageone')?.touched
+      ">
+          Pan card is required.
+        </div>
+      </div>
+      <!-- Second Director  details -->
+      <label class="label-business">Director Name(Second Director)</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_nametwo" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_nametwo')?.hasError('required') &&
+        pvtForm.get('director_nametwo')?.touched
+      ">
+          Director name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_nametwo')?.hasError('pattern') &&
+        pvtForm.get('director_nametwo')?.touched
+      ">
+          Please enter a valid director name.
+        </div>
+      </div>
+      <!-- 
+      <label class="label-business">Director Aadhar Number(Second Director)</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="director_aadhartwo" placeholder="Enter Aadhar Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadhartwo')?.hasError('required') &&
+        pvtForm.get('director_aadhartwo')?.touched
+      ">
+          Aadhar number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadhartwo')?.hasError('pattern') &&
+        pvtForm.get('director_aadhartwo')?.touched
+      ">
+          Please enter a valid number.
+
+        </div>
+      </div>
+
+      <label class="label-business">Upload Aadhar Front Side(Second Director)</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg" (change)="onFileSelectedPvt($event, 'director_aadhar_front_imagetwo', 'previewUrlPvtAdharF')"
+          formControlName="director_aadhar_front_imagetwo" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtAdharF']" [src]="previewUrls['previewUrlPvtAdharF']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadhar_front_imagetwo')?.hasError('required') &&
+        pvtForm.get('director_aadhar_front_imagetwo')?.touched
+      ">
+          Aadhar card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Upload Aadhar Back Side(Second Director)</label>
+      <div class="input-group">
+        <input type="file" accept=".png, .jpg, .jpeg" (change)="onFileSelectedPvt($event, 'director_aadhar_back_imagetwo', 'previewUrlPvtAdharB')"
+          formControlName="director_aadhar_back_imagetwo" class="form-control myfile-input" id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtAdharB']" [src]="previewUrls['previewUrlPvtAdharB']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_aadhar_back_imagetwo')?.hasError('required') &&
+        pvtForm.get('director_aadhar_back_imagetwo')?.touched
+      ">
+          Aadhar card is required.
+        </div>
+      </div>
+
+      <label class="label-business">Director PAN Number(Second Director)</label>
+
+      <div>
+        <input class="myinputs" formControlName="director_pantwo" type="text" placeholder="Enter PAN Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_pantwo')?.hasError('required') &&
+        pvtForm.get('director_pantwo')?.touched
+      ">
+          Pan number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_pantwo')?.hasError('pattern') &&
+        pvtForm.get('director_pantwo')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload PAN Card(Second Director)</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="director_pan_imagetwo" class="form-control myfile-input"
+          id="inputGroupFile04" (change)="onFileSelectedPvt($event, 'director_pan_imagetwo', 'previewUrlPvtPan')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtPan']" [src]="previewUrls['previewUrlPvtPan']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_pan_imagetwo')?.hasError('required') &&
+        pvtForm.get('director_pan_imagetwo')?.touched
+      ">
+          Pan card is required.
+        </div>
+      </div> -->
+      <label class="label-business">Compony GST Number</label>
+
+      <div>
+        <input class="myinputs" type="text" formControlName="director_gst" placeholder="Enter GST Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_gst')?.hasError('required') &&
+        pvtForm.get('director_gst')?.touched
+      ">
+          GST number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_gst')?.hasError('pattern') &&
+        pvtForm.get('director_gst')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business">Upload GST</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="director_gst_image"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelectedPvt($event, 'director_gst_image', 'previewUrlPvtGst')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtGst']" [src]="previewUrls['previewUrlPvtGst']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_gst_image')?.hasError('required') &&
+        pvtForm.get('director_gst_image')?.touched
+      ">
+          GST document is required.
+        </div>
+      </div>
+
+      <label class="label-business">Compony CIN Number</label>
+
+      <div>
+        <input class="myinputs" type="text" formControlName="director_cin" placeholder="Enter CIN Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('director_cin')?.hasError('required') &&
+        pvtForm.get('director_cin')?.touched
+      ">
+          CIN number is required.
+        </div>
+      </div>
+
+      <label class="label-business">Upload CIN</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="cin_number_image"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelectedPvt($event, 'cin_number_image', 'previewUrlPvtCin')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtCin']" [src]="previewUrls['previewUrlPvtCin']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        pvtForm.get('cin_number_image')?.hasError('required') &&
+        pvtForm.get('cin_number_image')?.touched
+      ">
+          CIN document is required.
+        </div>
+      </div>
+      <label class="label-business">Upload Your Image</label>
+      <div class="input-group input-group-lg">
+        <input type="file" accept=".png, .jpg, .jpeg" formControlName="profile_picture"
+          class="form-control myfile-input" id="inputGroupFile04"
+          (change)="onFileSelectedPvt($event, 'profile_picture', 'previewUrlPvtPro')"
+          aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+        <img *ngIf="previewUrls['previewUrlPvtPro']" [src]="previewUrls['previewUrlPvtPro']" alt="Preview Image"
+          width="100px" height="100px">
+
+        <div class="validationError" *ngIf="
+        otherForm.get('profile_picture')?.hasError('required') &&
+        otherForm.get('profile_picture')?.touched
+      ">
+          Profile document is required.
+        </div>
+      </div>
+      <label class="label-business-three">Bank Name</label>
+      <div>
+        <input class="myinputs" type="text" formControlName="bank_name" placeholder="Enter Bank Name" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('bank_name')?.hasError('required') &&
+        pvtForm.get('bank_name')?.touched
+      ">
+          Bank name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('bank_name')?.hasError('pattern') &&
+        pvtForm.get('bank_name')?.touched
+      ">
+          Please enter a valid name.
+        </div>
+      </div>
+
+      <label class="label-business-three">A/C Number</label>
+      <div>
+        <input class="myinputs-three" type="text" formControlName="account_number" placeholder="Enter A/C Number" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('account_number')?.hasError('required') &&
+        pvtForm.get('account_number')?.touched
+      ">
+          Account number is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('account_number')?.hasError('pattern') &&
+        pvtForm.get('account_number')?.touched
+      ">
+          Please enter a valid number.
+        </div>
+      </div>
+
+      <label class="label-business-three">IFSC Code</label>
+      <div>
+        <input class="myinputs-three" formControlName="ifsc_code" type="text" placeholder="Enter IFSC Code" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('ifsc_code')?.hasError('required') &&
+        pvtForm.get('ifsc_code')?.touched
+      ">
+          IFSC code is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('ifsc_code')?.hasError('pattern') &&
+        pvtForm.get('ifsc_code')?.touched
+      ">
+          Please enter a valid code.
+        </div>
+      </div>
+
+      <label class="label-business-three">Account Holder Name</label>
+      <div>
+        <input class="myinputs-three" formControlName="account_holder_name" type="text" placeholder="Enter Name" />
+        <div class="validationError" *ngIf="
+        pvtForm.get('account_holder_name')?.hasError('required') &&
+        pvtForm.get('account_holder_name')?.touched
+      ">
+          Name is required.
+        </div>
+        <div class="validationError" *ngIf="
+        pvtForm.get('account_holder_name')?.hasError('pattern') &&
+        pvtForm.get('account_holder_name')?.touched
+      ">
+          Please enter a valid name.
+        </div>
+      </div>
+      <div>
+        <button class="Submit-botnss" *ngIf="pvtForm.invalid" [disabled]="pvtForm.invalid">Submit</button>
+        <button class="Submit-botns" *ngIf="pvtForm.valid">Submit</button>
+
+      </div>
+    </form>
+  </div>
+
+  <!-- two -->
+
+
+
+  <!-- three/// -->
+
+  <!-- <div class="mycards-third-div mt-3">
+    <h3 class="propertier-kyc-heading-three">KYC</h3>
+   
+  </div> -->
+
+  <!-- four-section -->
+
+  <!-- <div class="kyc-completed-sec mt-3" *ngIf="isSubmit">
+    <div class="text-center">
+      <img src="../../assets/kyctick.png" alt="" />
+      <h4 class="kyc-heading-four">KYC Completed</h4>
+      <p class="kyc-paragraphs">
+        
+      </p>
+    </div>
+    <div class="text-center mt-3">
+      <button class="back-to-home-botns" routerLink="/">
+        <i class="fa fa-chevron-left myarrow" aria-hidden="true"></i>Back to
+        Home
+      </button>
+    </div>
+  </div> -->
+  
+  <div class="kyc-completed-sec mt-3" *ngIf="userKycDetails.statusCode == 2">
+    <div class="text-center">
+      <img src="../../assets/kyctick.png" alt="" />
+      <h4 class="kyc-heading-four">KYC Completed</h4>
+      <p class="kyc-paragraphs">
+        Your KYC is allready Approved.
+      </p>
+    </div>
+    <div class="text-center mt-3">
+      <button class="back-to-home-botns" routerLink="/kyc_details">
+        <i class="fa fa-chevron-left myarrow" aria-hidden="true"></i>Your KYC details
+      </button>
+    </div>
+  </div>
+  <div class="kyc-completed-sec mt-3" *ngIf="userKycDetails.statusCode == 1">
+    <div class="text-center">
+      <img src="../../assets/kyctick.png" alt="" />
+      <h4 class="kyc-heading-four">KYC Pending</h4>
+      <p class="kyc-paragraphs">
+        Thanks for submitting your document we’ll verify it and complete your
+        KYC as soon as possible
+      </p>
+    </div>
+    <div class="text-center mt-3">
+      <button class="back-to-home-botns" routerLink="/kyc_details">
+        <i class="fa fa-chevron-left myarrow" aria-hidden="true"></i>Your KYC details
+      </button>
+    </div>
+  </div>
+</section>
